@@ -9,6 +9,14 @@ const customers = [
     name: "Dalton",
     age: 8,
   },
+  {
+    name: "Denver",
+    age: 39,
+  },
+  {
+    name: "Briana",
+    age: 35,
+  },
 ];
 
 module.exports = customers;
