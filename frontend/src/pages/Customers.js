@@ -6,11 +6,12 @@ import SideNav from "../components/SideNav";
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
 
+  // By setting the proxy in package.json to localhost:3001, the /customers routes are now the same (in theory)
   const getCustomers = async () => {
-    const res = await fetch("/customers/");
-    // const data = await res.json();
-    console.log(res);
+    const res = await fetch("/customers");
+    const data = await res.json();
     // setCustomers(data.customerList);
+    setCustomers(data);
   };
 
   useEffect(() => {
@@ -24,6 +25,14 @@ const Customers = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>review customers</h1>
+          {customers.map((customer) => {
+            const { name, age } = customer;
+            return (
+              <p>
+                Name: {name} Age: {age}
+              </p>
+            );
+          })}
         </div>
       </div>
     </main>
