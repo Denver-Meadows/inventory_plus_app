@@ -1,10 +1,10 @@
-import express from "express";
+const express = require("express");
 const app = express();
 
 // app.use runs everytime we get an incoming response
-// app.use((req, res) => {
-//   res.send("Get that server working");
-// });
+app.use((req, res) => {
+  res.send("Get that server working");
+});
 
 app.get("/", (req, res) => {
   res.send("home page");
