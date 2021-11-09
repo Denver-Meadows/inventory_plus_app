@@ -3,7 +3,7 @@
 const customers = [
   {
     name: "Denver",
-    age: 13,
+    age: 14,
   },
   {
     name: "Dalton",

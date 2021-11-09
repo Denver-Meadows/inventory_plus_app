@@ -1,10 +1,26 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 
+const port = 3001;
 const app = express();
 const customers = require("./testData");
 
 app.use(cors());
+
+// connect to mongo with mongoose
+mongoose
+  .connect("mongodb://localhost:27017/inventoryTest", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connection Open with Mongoose to Mongo");
+  })
+  .catch((err) => {
+    console.log("Mongoose Error");
+    console.log(err);
+  });
 
 // app.use runs everytime we get an incoming response
 // app.use((req, res) => {
@@ -12,6 +28,7 @@ app.use(cors());
 // });
 
 app.get("/", (req, res) => {
+  console.log("home page");
   res.send("home page");
 });
 
@@ -43,6 +60,6 @@ app.get("*", (req, res) => {
 
 //
 
-app.listen(3001, () => {
+app.listen(port, () => {
   console.log("Serving on port 3001");
 });
