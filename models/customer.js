@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const CustomerSchema = new mongoose.Schema({
-  address: {
+const customerSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
   },
@@ -10,14 +10,10 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: Number,
-    required: true,
-  },
-  name: {
     type: String,
     required: true,
   },
-  postalZip: {
+  zip: {
     type: String,
   },
   country: {
@@ -25,4 +21,4 @@ const CustomerSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Customer", CustomerSchema);
+module.exports = mongoose.model("Customer", customerSchema);

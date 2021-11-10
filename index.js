@@ -22,6 +22,9 @@ mongoose
     console.log(err);
   });
 
+const testCustomer = require("./controllers/customers");
+testCustomer.save();
+
 // app.use runs everytime we get an incoming response
 // app.use((req, res) => {
 //   res.send("Get that server working");
