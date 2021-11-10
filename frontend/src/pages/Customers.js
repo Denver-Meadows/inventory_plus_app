@@ -27,11 +27,7 @@ const Customers = () => {
           <h1>review customers</h1>
           {customers.map((customer, index) => {
             const { name, age } = customer;
-            return (
-              <p key={index}>
-                Name: {name} Age: {age}
-              </p>
-            );
+            return <p key={index}>{`Name:  ${name} Age: ${age}`}</p>;
           })}
         </div>
       </div>
