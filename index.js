@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const port = 3001;
 const app = express();
+
 const customers = require("./testData");
 
 app.use(cors());
@@ -21,9 +22,6 @@ mongoose
     console.log("Mongoose Error");
     console.log(err);
   });
-
-const testCustomer = require("./controllers/customers");
-testCustomer.save();
 
 // app.use runs everytime we get an incoming response
 // app.use((req, res) => {

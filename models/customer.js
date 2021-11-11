@@ -13,11 +13,13 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  zip: {
+  city: {
     type: String,
+    required: true,
   },
-  country: {
+  state: {
     type: String,
+    required: true,
   },
 });
 
