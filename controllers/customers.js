@@ -1,5 +1,15 @@
 const Customer = require("../models/customer");
 
+// Creating a method that can be called in Index.js, under the routes.  Eventually Routes will be moved.
+// Having trouble getting this data to the route to be passed to front end.
+module.exports.allCustomers = async (req, res) => {
+  const customers = await Customer.find({});
+  console.log(customers);
+  // return customers;
+};
+
+/*
+used for testing - no longer needed
 const testCustomer = new Customer({
   name: "Denver Meadows",
   email: "dm@yahoo.com",
@@ -9,6 +19,7 @@ const testCustomer = new Customer({
 });
 
 module.exports = testCustomer;
+*/
 
 /*
 Used for adding customers

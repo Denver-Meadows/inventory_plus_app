@@ -7,6 +7,11 @@ const app = express();
 
 const customers = require("./testData");
 
+// Trying to get the data from the controller to this route.
+const testCustomers = require("./controllers/customers");
+console.log(testCustomers.allCustomers());
+// const customer1 = await testCustomers.allCustomers();
+
 app.use(cors());
 
 // connect to mongo with mongoose

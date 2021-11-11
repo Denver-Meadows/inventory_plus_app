@@ -25,10 +25,10 @@ const Customers = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>review customers</h1>
-          {customers.map((customer, index) => {
+          {/* {customers.map((customer, index) => {
             const { name, age } = customer;
             return <p key={index}>{`Name:  ${name} Age: ${age}`}</p>;
-          })}
+          })} */}
         </div>
       </div>
     </main>
