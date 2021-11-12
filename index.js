@@ -5,12 +5,15 @@ const mongoose = require("mongoose");
 const port = 3001;
 const app = express();
 
+// Import customerRoute
+const customerRoute = require("./routes/customerRoute");
+
 const customers = require("./testData");
 
 // Trying to get the data from the controller to this route.
-const testCustomers = require("./controllers/customers");
-const newDic = testCustomers.allCustomers();
-console.log(newDic);
+// const testCustomers = require("./controllers/customers");
+// const newDic = testCustomers.allCustomers();
+// console.log(newDic);
 
 app.use(cors());
 
@@ -33,16 +36,20 @@ mongoose
 //   res.send("Get that server working");
 // });
 
+// Using the customerRoute for '/customers'
+
+// ROUTES - will need to move to separate file soon.
 app.get("/", (req, res) => {
   console.log("home page");
   res.send("home page");
 });
 
+app.use("/", customerRoute);
 // passed in our customers data above and here we are sending that data in json format.
 // with the proxy setup in frontend package.json, we can now access this json information in the frontend
-app.get("/customers", (req, res) => {
-  res.json(customers);
-});
+// app.get("/customers", (req, res) => {
+//   res.json(customers);
+// });
 
 app.get("/cats", (req, res) => {
   res.send("MEOW");
