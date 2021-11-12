@@ -21,7 +21,6 @@ const Customers = () => {
 
   useEffect(() => {
     getCustomers();
-    console.log(customers);
   }, []);
 
   return (

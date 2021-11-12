@@ -7,13 +7,8 @@ const app = express();
 
 // Import customerRoute
 const customerRoute = require("./routes/customerRoute");
-
-const customers = require("./testData");
-
-// Trying to get the data from the controller to this route.
-// const testCustomers = require("./controllers/customers");
-// const newDic = testCustomers.allCustomers();
-// console.log(newDic);
+const inventoryRoute = require("./routes/inventoryRoute");
+const supplierRoute = require("./routes/supplierRoute");
 
 app.use(cors());
 
@@ -44,26 +39,9 @@ app.get("/", (req, res) => {
   res.send("home page");
 });
 
-app.use("/", customerRoute);
-// passed in our customers data above and here we are sending that data in json format.
-// with the proxy setup in frontend package.json, we can now access this json information in the frontend
-// app.get("/customers", (req, res) => {
-//   res.json(customers);
-// });
-
-app.get("/cats", (req, res) => {
-  res.send("MEOW");
-});
-
-app.get("/r/:anything", (req, res) => {
-  const { anything } = req.params;
-  res.send(`<h1>browsing ${anything}</h1>`);
-});
-
-app.get("/search", (req, res) => {
-  console.log(req.query);
-  res.send("hello");
-});
+app.use("/customers", customerRoute);
+app.use("/inventory", inventoryRoute);
+app.use("/suppliers", supplierRoute);
 
 app.get("*", (req, res) => {
   res.send("i don't know that path");
