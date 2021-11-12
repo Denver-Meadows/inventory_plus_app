@@ -4,8 +4,7 @@ const Customer = require("../models/customer");
 // Having trouble getting this data to the route to be passed to front end.
 module.exports.allCustomers = async (req, res) => {
   const customers = await Customer.find({});
-  console.log(customers);
-  // return customers;
+  // realizing i need to use axios or another method to get my data!!
 };
 
 /*

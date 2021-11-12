@@ -9,14 +9,14 @@ const customers = require("./testData");
 
 // Trying to get the data from the controller to this route.
 const testCustomers = require("./controllers/customers");
-console.log(testCustomers.allCustomers());
-// const customer1 = await testCustomers.allCustomers();
+const newDic = testCustomers.allCustomers();
+console.log(newDic);
 
 app.use(cors());
 
 // connect to mongo with mongoose
 mongoose
-  .connect("mongodb://localhost:27017/inventoryTest", {
+  .connect("mongodb://localhost:27017/inventory_plus_app", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
