@@ -8,8 +8,8 @@ const Suppliers = () => {
   const [suppliers, setSuppliers] = useState([]);
 
   const fetchSuppliers = async () => {
-    const suppliers = await axios.get("/suppliers");
-    setSuppliers(suppliers);
+    const { data } = await axios.get("/suppliers");
+    setSuppliers(data);
   };
 
   useEffect(() => {
