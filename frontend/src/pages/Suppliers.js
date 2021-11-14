@@ -26,6 +26,18 @@ const Suppliers = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>review suppliers</h1>
+          {suppliers.map((supplier) => {
+            const { name, phone, email, city, state, _id } = supplier;
+            return (
+              <p key={_id}>
+                {`Name: ${name}
+                Email: ${email}
+                Phone: ${phone}
+                City: ${city}
+                State: ${state}`}
+              </p>
+            );
+          })}
         </div>
       </div>
     </main>

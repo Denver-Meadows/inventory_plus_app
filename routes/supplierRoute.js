@@ -2,11 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-const customer = require("../models/customer");
+const supplier = require("../models/supplier");
 
 // ///// NEED TO SETUP AND CONNECT TO SUPPLIER DB
 router.get("/", (req, res) => {
-  customer.find((error, data) => {
+  supplier.find((error, data) => {
     if (error) next(error);
     else {
       res.json(data);
