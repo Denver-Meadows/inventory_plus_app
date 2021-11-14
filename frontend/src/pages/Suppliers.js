@@ -3,14 +3,10 @@ import DashboardLink from "../components/DashboardLink";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import axios from "axios";
+import { useGlobalContext } from "../components/context";
 
 const Suppliers = () => {
-  const [suppliers, setSuppliers] = useState([]);
-
-  const fetchSuppliers = async () => {
-    const { data } = await axios.get("/suppliers");
-    setSuppliers(data);
-  };
+  const { suppliers, loading, fetchSuppliers } = useGlobalContext();
 
   useEffect(() => {
     fetchSuppliers();
@@ -19,6 +15,7 @@ const Suppliers = () => {
     };
   }, []);
 
+  if (loading) return <h1>Loading</h1>;
   return (
     <main className="dashboard">
       <div className="single-page">

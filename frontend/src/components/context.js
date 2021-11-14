@@ -1,9 +1,63 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
+import axios from "axios";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
+  const [suppliers, setSuppliers] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [inventory, setInventory] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchSuppliers = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get("/suppliers");
+      setSuppliers(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  const fetchCustomers = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get("/customers");
+      setCustomers(data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  const fetchInventory = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get("/inventory");
+      setInventory(data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <AppContext.Provider
+      value={{
+        suppliers,
+        customers,
+        inventory,
+        loading,
+        fetchSuppliers,
+        fetchCustomers,
+        fetchInventory,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useGlobalContext = () => {

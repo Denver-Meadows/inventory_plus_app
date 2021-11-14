@@ -3,21 +3,19 @@ import DashboardLink from "../components/DashboardLink";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import axios from "axios";
+import { useGlobalContext } from "../components/context";
 
 const Inventory = () => {
-  const [inventory, setInventory] = useState([]);
-
-  const fetchInventory = async () => {
-    const { data } = await axios.get("/inventory");
-    setInventory(data);
-  };
+  const { inventory, loading, fetchInventory } = useGlobalContext();
 
   useEffect(() => {
     fetchInventory();
     return () => {
-      // Clean up
+      // Cleanup
     };
   }, []);
+
+  if (loading) return <h1>Loading</h1>;
 
   return (
     <main className="dashboard">

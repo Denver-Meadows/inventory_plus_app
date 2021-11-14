@@ -26,18 +26,11 @@ mongoose
     console.log(err);
   });
 
-// app.use runs everytime we get an incoming response
-// app.use((req, res) => {
-//   res.send("Get that server working");
+// ROUTES
+// app.get("/", (req, res) => {
+//   console.log("home page");
+//   res.send("home page");
 // });
-
-// Using the customerRoute for '/customers'
-
-// ROUTES - will need to move to separate file soon.
-app.get("/", (req, res) => {
-  console.log("home page");
-  res.send("home page");
-});
 
 app.use("/customers", customerRoute);
 app.use("/inventory", inventoryRoute);
