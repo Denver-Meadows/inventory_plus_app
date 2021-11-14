@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Link } from "react";
 import DashboardLink from "../components/DashboardLink";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
@@ -23,17 +23,15 @@ const Suppliers = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>review suppliers</h1>
+          <h1>Suppliers</h1>
           {suppliers.map((supplier) => {
-            const { name, phone, email, city, state, _id } = supplier;
+            const { name, _id } = supplier;
             return (
-              <p key={_id}>
-                {`Name: ${name}
-                Email: ${email}
-                Phone: ${phone}
-                City: ${city}
-                State: ${state}`}
-              </p>
+              <div className="btnContainer">
+                <button className="btnList" key={_id}>
+                  {name}
+                </button>
+              </div>
             );
           })}
         </div>

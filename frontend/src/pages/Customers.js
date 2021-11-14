@@ -26,19 +26,15 @@ const Customers = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>review customers</h1>
+          <h1>Customers</h1>
           {customers.map((customer) => {
-            const { name, email, phone, city, state, _id } = customer;
+            const { name, _id } = customer;
             return (
-              <p key={_id}>
-                {`
-              Name:  ${name} 
-              Email: ${email}
-              Phone: ${phone}
-              City: ${city}
-              State: ${state}
-              `}
-              </p>
+              <div className="btnContainer">
+                <button className="btnList" key={_id}>
+                  {name}
+                </button>
+              </div>
             );
           })}
         </div>

@@ -19,12 +19,12 @@ function SideNav() {
             <BsBox /> Inventory
           </Link>
         </li>
-        <li className="side-nav-item">
+        {/* <li className="side-nav-item">
           <Link to="/purchasing">
             {" "}
             <BsCartCheck /> Purchasing
           </Link>
-        </li>
+        </li> */}
         <li className="side-nav-item">
           <Link to="/customers">
             {" "}
