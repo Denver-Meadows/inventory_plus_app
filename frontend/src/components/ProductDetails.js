@@ -6,16 +6,16 @@ function ProductDetails() {
       <h3>Product Details</h3>
       <div className="product-details">
         <div className="product-details-item">
-          <p>Low Stock Items</p>
-          <p>30</p>
+          <p>Number of Items</p>
+          <p>15</p>
         </div>
         <div className="product-details-item">
-          <p>Item Group</p>
-          <p>14</p>
+          <p>Categories</p>
+          <p>4</p>
         </div>
         <div className="product-details-item">
-          <p>No. of Items</p>
-          <p>104</p>
+          <p>Items with Low Stock</p>
+          <p>2</p>
         </div>
       </div>
     </article>

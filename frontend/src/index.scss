@@ -20,6 +20,28 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+// Loading
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 10rem;
+
+  &::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 10px solid #dddddd;
+    border-top-color: var(--clr-primary-1);
+    border-radius: 50%;
+    animation: loading 1s ease infinite;
+  }
+}
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 // Dashboard
 .dashboard {
   // height: 100vh;
