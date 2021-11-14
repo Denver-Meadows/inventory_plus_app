@@ -26,6 +26,27 @@ const Inventory = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>review inventory</h1>
+          {inventory.map((item) => {
+            const {
+              name,
+              sellPrice,
+              cost,
+              description,
+              category,
+              qtyOnHand,
+              _id,
+            } = item;
+            return (
+              <p key={_id}>
+                {`Name: ${name}
+              Price: ${sellPrice}
+              Cost: ${cost}
+              Description: ${description}
+              Category: ${category}
+              Quantity Avaiable: ${qtyOnHand}`}
+              </p>
+            );
+          })}
         </div>
       </div>
     </main>

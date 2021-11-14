@@ -47,10 +47,6 @@ app.get("*", (req, res) => {
   res.send("i don't know that path");
 });
 
-//
-
-//
-
 app.listen(port, () => {
   console.log("Serving on port 3001");
 });

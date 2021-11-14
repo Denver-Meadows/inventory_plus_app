@@ -2,11 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-const customer = require("../models/customer");
+const inventory = require("../models/inventory");
 
 // //////// NEED TO SETUP AND CONNECT TO INVENTORY DB
 router.get("/", (req, res) => {
-  customer.find((error, data) => {
+  inventory.find((error, data) => {
     if (error) next(error);
     else {
       res.json(data);
