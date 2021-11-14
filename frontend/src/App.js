@@ -5,6 +5,7 @@ import Customers from "./pages/Customers";
 import Suppliers from "./pages/Suppliers";
 import Inventory from "./pages/Inventory";
 import Purchasing from "./pages/Purchasing";
+import SingleSupplier from "./pages/SingleSupplier";
 
 function App() {
   return (
@@ -12,17 +13,20 @@ function App() {
       <Route path="/" exact>
         <Dashboard />
       </Route>
-      <Route path="/customers">
+      <Route exact path="/customers">
         <Customers />
       </Route>
-      <Route path="/inventory">
+      <Route exact path="/inventory">
         <Inventory />
       </Route>
-      <Route path="/purchasing">
+      <Route exact path="/purchasing">
         <Purchasing />
       </Route>
-      <Route path="/Suppliers">
+      <Route exact path="/suppliers">
         <Suppliers />
+      </Route>
+      <Route exact path="/suppliers/:id">
+        <SingleSupplier />
       </Route>
       <Route path="*">
         <ErrorPage />

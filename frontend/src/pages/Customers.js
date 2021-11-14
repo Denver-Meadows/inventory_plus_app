@@ -30,10 +30,8 @@ const Customers = () => {
           {customers.map((customer) => {
             const { name, _id } = customer;
             return (
-              <div className="btnContainer">
-                <button className="btnList" key={_id}>
-                  {name}
-                </button>
+              <div className="btnContainer" key={_id}>
+                <button className="btnList">{name}</button>
               </div>
             );
           })}
