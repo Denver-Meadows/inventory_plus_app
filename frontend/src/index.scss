@@ -117,11 +117,17 @@ body {
 
 // Side Nav
 .side-nav {
-  list-style: none;
   font-size: 1.2rem;
+  list-style: none;
 
   &-item {
     margin: 0.5rem 0.5rem 2rem 0.5rem;
+
+    a {
+      color: var(--clr-primary-1);
+      list-style: none;
+      text-decoration: none;
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import axios from "axios";
 import { useGlobalContext } from "../components/context";
+import { Link } from "react-router-dom";
 
 const Inventory = () => {
   const { inventory, loading, fetchInventory } = useGlobalContext();
@@ -24,26 +25,15 @@ const Inventory = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>review inventory</h1>
-          {inventory.map((item) => {
-            const {
-              name,
-              sellPrice,
-              cost,
-              description,
-              category,
-              qtyOnHand,
-              _id,
-            } = item;
+          <h1>Inventory</h1>
+          {inventory.map((supplier) => {
+            const { name, _id } = supplier;
             return (
-              <p key={_id}>
-                {`Name: ${name}
-              Price: ${sellPrice}
-              Cost: ${cost}
-              Description: ${description}
-              Category: ${category}
-              Quantity Avaiable: ${qtyOnHand}`}
-              </p>
+              <div className="btnContainer" key={_id}>
+                <Link to={`/inventory/${_id}`}>
+                  <button className="btnList">{name}</button>
+                </Link>
+              </div>
             );
           })}
         </div>
