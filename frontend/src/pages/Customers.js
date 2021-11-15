@@ -5,8 +5,7 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import axios from "axios";
 import { useGlobalContext } from "../components/context";
-
-////////////////   NEED TO MAKE A COMPONENT WITH THE RETURN CUSTOMER DATA
+import { Link } from "react-router-dom";
 
 const Customers = () => {
   const { customers, loading, fetchCustomers } = useGlobalContext();
@@ -31,7 +30,9 @@ const Customers = () => {
             const { name, _id } = customer;
             return (
               <div className="btnContainer" key={_id}>
-                <button className="btnList">{name}</button>
+                <Link to={`/customers/${_id}`}>
+                  <button className="btnList">{name}</button>
+                </Link>
               </div>
             );
           })}

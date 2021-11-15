@@ -6,6 +6,7 @@ import Suppliers from "./pages/Suppliers";
 import Inventory from "./pages/Inventory";
 import Purchasing from "./pages/Purchasing";
 import SingleSupplier from "./pages/SingleSupplier";
+import SingleCustomer from "./pages/SingleCustomer";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
       </Route>
       <Route exact path="/suppliers/:id">
         <SingleSupplier />
+      </Route>
+      <Route exact path="/customers/:id">
+        <SingleCustomer />
       </Route>
       <Route path="*">
         <ErrorPage />
