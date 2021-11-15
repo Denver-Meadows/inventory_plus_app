@@ -31,7 +31,7 @@ const Suppliers = () => {
         <div className="single-page-overview">
           <h1>Suppliers</h1>
           {suppliers.map((supplier) => {
-            const { name, _id, email, phone } = supplier;
+            const { name, _id } = supplier;
             return (
               <div className="btnContainer" key={_id}>
                 <Link to={`/suppliers/${_id}`}>

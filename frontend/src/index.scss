@@ -278,3 +278,29 @@ body {
 .btnList:active {
   transform: translateY(-1px);
 }
+
+.single-result {
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+
+  &-btn-container {
+    margin-top: 1rem;
+  }
+
+  button {
+    margin-right: 0.4rem;
+    background-color: var(--clr-primary-1);
+    padding: 0.3rem;
+    border-radius: 4px;
+    color: var(--clr-primary-3);
+
+    &:hover {
+      transform: translateY(-2px);
+      // box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}

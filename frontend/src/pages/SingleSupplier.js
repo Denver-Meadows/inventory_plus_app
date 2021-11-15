@@ -10,31 +10,31 @@ const SingleSupplier = () => {
   const { id } = useParams();
   const [supplier] = suppliers.filter((item) => item._id === id);
 
-  // useEffect(() => {
-  //   fetchSuppliers();
-  //   return () => {
-  //     // Cleanup
-  //   };
-  // }, []);
+  useEffect(() => {
+    fetchSuppliers();
+    return () => {
+      // Cleanup
+    };
+  }, []);
 
   if (loading) return <Loading />;
+  if (!supplier) return <h1>''</h1>;
   return (
     <main className="dashboard">
       <div className="single-page">
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>Single Supplier</h1>
-          <div className="single-supplier">
-            <div className="single-supplier-info">
-              <h3>{supplier.name}</h3>
-              <p>{supplier.phone}</p>
-              <p>{supplier.email}</p>
-              <p>{`${supplier.city}, ${supplier.state}`}</p>
+          <h1>{supplier.name}</h1>
+          <div className="single-result">
+            <div className="single-result-info">
+              <p>{`Phone: ${supplier.phone}`}</p>
+              <p>{`Email: ${supplier.email}`}</p>
+              <p>{`Location: ${supplier.city}, ${supplier.state}`}</p>
             </div>
-            <div className="btn-container">
+            <div className="single-result-btn-container">
               <Link to={"/suppliers"}>
-                <button>All Suppliers</button>
+                <button>Go Back</button>
               </Link>
               <button>Edit</button>
               <button>Delete</button>
