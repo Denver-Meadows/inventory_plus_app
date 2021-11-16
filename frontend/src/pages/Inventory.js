@@ -26,8 +26,8 @@ const Inventory = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>Inventory</h1>
-          {inventory.map((supplier) => {
-            const { name, _id } = supplier;
+          {inventory.map((inventory) => {
+            const { name, _id } = inventory;
             return (
               <div className="btnContainer" key={_id}>
                 <Link to={`/inventory/${_id}`}>
