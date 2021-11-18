@@ -8,7 +8,8 @@ import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
 
 const Inventory = () => {
-  const { inventory, loading, fetchInventory } = useGlobalContext();
+  const { inventory, loading, fetchInventory, page } = useGlobalContext();
+  // const [page, setPage] = useState(0);
 
   useEffect(() => {
     fetchInventory();
@@ -16,6 +17,15 @@ const Inventory = () => {
       // Cleanup
     };
   }, []);
+
+  // useEffect(() => {
+  //   if (loading) return;
+  //   setPagedData(inventory[page]);
+  //   console.log(pagedData);
+  //   return () => {
+  //     // Cleanup
+  //   };
+  // }, [pagedData]);
 
   if (loading) return <Loading />;
 
@@ -26,8 +36,8 @@ const Inventory = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>Inventory</h1>
-          {inventory.map((inventory) => {
-            const { name, _id } = inventory;
+          {inventory[page].map((item) => {
+            const { name, _id } = item;
             return (
               <div className="btnContainer" key={_id}>
                 <Link to={`/inventory/${_id}`}>

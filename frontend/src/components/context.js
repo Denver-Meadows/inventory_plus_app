@@ -8,12 +8,26 @@ const AppProvider = ({ children }) => {
   const [customers, setCustomers] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
+  const [pagedData, setPagedData] = useState([]);
+
+  const paginate = (data) => {
+    const itemsPerPage = 10;
+    const pages = Math.ceil(data.length / itemsPerPage);
+
+    const paginatedData = Array.from({ length: pages }, (_, index) => {
+      const start = index * itemsPerPage;
+      return data.slice(start, start + itemsPerPage);
+    });
+
+    return paginatedData;
+  };
 
   const fetchSuppliers = async () => {
     setLoading(true);
     try {
       const { data } = await axios.get("/suppliers");
-      setSuppliers(data);
+      setSuppliers(paginate(data));
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -25,7 +39,7 @@ const AppProvider = ({ children }) => {
     setLoading(true);
     try {
       const { data } = await axios.get("/customers");
-      setCustomers(data);
+      setCustomers(paginate(data));
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -33,10 +47,11 @@ const AppProvider = ({ children }) => {
   };
 
   const fetchInventory = async () => {
+    setPage(1);
     setLoading(true);
     try {
       const { data } = await axios.get("/inventory");
-      setInventory(data);
+      setInventory(paginate(data));
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -50,6 +65,9 @@ const AppProvider = ({ children }) => {
         customers,
         inventory,
         loading,
+        page,
+        pagedData,
+        setPagedData,
         fetchSuppliers,
         fetchCustomers,
         fetchInventory,
