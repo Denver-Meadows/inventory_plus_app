@@ -6,18 +6,35 @@ import Loading from "./Loading";
 import axios from "axios";
 import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import Inventory from "./Inventory";
+
+////// Style buttons.  Pass in SingleCustomer component below and pass in page prop.
+/////// or find that id in the db and render data that way.
 
 const Customers = () => {
   const { customers, loading, fetchCustomers } = useGlobalContext();
+  const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    fetchCustomers();
-    return () => {
-      // Cleanup
-    };
-  }, []);
+  const nextPage = () => {
+    setPage((oldPage) => {
+      let nextPage = oldPage + 1;
+      if (nextPage > customers.length - 1) nextPage = 0;
+      console.log(customers.length);
+      return nextPage;
+    });
+  };
+
+  const prevPage = () => {
+    setPage((oldPage) => {
+      let prevPage = oldPage - 1;
+      if (prevPage < 0) prevPage = customers.length - 1;
+      return prevPage;
+    });
+  };
 
   if (loading) return <Loading />;
+  if (customers.length < 1) return <Dashboard />;
 
   return (
     <main className="dashboard">
@@ -26,7 +43,7 @@ const Customers = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>Customers</h1>
-          {customers.map((customer) => {
+          {customers[page].map((customer) => {
             const { name, _id } = customer;
             return (
               <div className="btnContainer" key={_id}>
@@ -36,6 +53,14 @@ const Customers = () => {
               </div>
             );
           })}
+          {customers.length < 0 ? (
+            ""
+          ) : (
+            <div className="hello">
+              <button onClick={prevPage}>prev</button>
+              <button onClick={nextPage}>next</button>
+            </div>
+          )}
         </div>
       </div>
     </main>

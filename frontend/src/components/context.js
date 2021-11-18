@@ -8,8 +8,8 @@ const AppProvider = ({ children }) => {
   const [customers, setCustomers] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(0);
-  const [pagedData, setPagedData] = useState([]);
+  // const [page, setPage] = useState(0);
+  // const [pagedData, setPagedData] = useState([]);
 
   const paginate = (data) => {
     const itemsPerPage = 10;
@@ -58,24 +58,10 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const nextPage = () => {
-    setPage((oldPage) => {
-      let nextPage = oldPage + 1;
-      if (nextPage > inventory.length - 1) nextPage = 0;
-      return nextPage;
-    });
-  };
-
-  const prevPage = () => {
-    setPage((oldPage) => {
-      let prevPage = oldPage - 1;
-      if (prevPage < 0) prevPage = inventory.length - 1;
-      return prevPage;
-    });
-  };
-
   useEffect(() => {
     fetchInventory();
+    fetchCustomers();
+    fetchSuppliers();
     return () => {
       //cleanup
     };
@@ -88,12 +74,6 @@ const AppProvider = ({ children }) => {
         customers,
         inventory,
         loading,
-        page,
-        pagedData,
-        setPage,
-        nextPage,
-        prevPage,
-        setPagedData,
         fetchSuppliers,
         fetchCustomers,
         fetchInventory,

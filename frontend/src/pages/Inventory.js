@@ -9,22 +9,31 @@ import { Link } from "react-router-dom";
 import Dashboard from "./Dashboard";
 
 const Inventory = () => {
-  const {
-    inventory,
-    loading,
-    fetchInventory,
-    page,
-    setPage,
-    nextPage,
-    prevPage,
-  } = useGlobalContext();
+  const { inventory, loading, fetchInventory } = useGlobalContext();
+  const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    fetchInventory();
-    return () => {
-      //cleanup
-    };
-  }, [page]);
+  const nextPage = () => {
+    setPage((oldPage) => {
+      let nextPage = oldPage + 1;
+      if (nextPage > inventory.length - 1) nextPage = 0;
+      return nextPage;
+    });
+  };
+
+  const prevPage = () => {
+    setPage((oldPage) => {
+      let prevPage = oldPage - 1;
+      if (prevPage < 0) prevPage = inventory.length - 1;
+      return prevPage;
+    });
+  };
+
+  // useEffect(() => {
+  //   fetchInventory();
+  //   return () => {
+  //     //cleanup
+  //   };
+  // }, [page]);
 
   if (loading) return <Loading />;
 
@@ -47,10 +56,14 @@ const Inventory = () => {
               </div>
             );
           })}
-          <div className="hello">
-            <button onClick={prevPage}>prev</button>
-            <button onClick={nextPage}>next</button>
-          </div>
+          {inventory.length < 0 ? (
+            ""
+          ) : (
+            <div className="hello">
+              <button onClick={prevPage}>prev</button>
+              <button onClick={nextPage}>next</button>
+            </div>
+          )}
         </div>
       </div>
     </main>
