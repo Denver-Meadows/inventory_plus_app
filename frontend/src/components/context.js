@@ -47,16 +47,23 @@ const AppProvider = ({ children }) => {
   };
 
   const fetchInventory = async () => {
-    setPage(1);
     setLoading(true);
     try {
       const { data } = await axios.get("/inventory");
+      // setInventory(paginate(data));
       setInventory(paginate(data));
       setLoading(false);
     } catch (error) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchInventory();
+    return () => {
+      //cleanup
+    };
+  }, []);
 
   return (
     <AppContext.Provider

@@ -10,22 +10,14 @@ import { Link } from "react-router-dom";
 const Inventory = () => {
   const { inventory, loading, fetchInventory, page } = useGlobalContext();
   // const [page, setPage] = useState(0);
-
-  useEffect(() => {
-    fetchInventory();
-    return () => {
-      // Cleanup
-    };
-  }, []);
+  // const [showInventory, setShowInventory] = useState([]);
 
   // useEffect(() => {
-  //   if (loading) return;
-  //   setPagedData(inventory[page]);
-  //   console.log(pagedData);
+  //   fetchInventory();
   //   return () => {
   //     // Cleanup
   //   };
-  // }, [pagedData]);
+  // }, []);
 
   if (loading) return <Loading />;
 
