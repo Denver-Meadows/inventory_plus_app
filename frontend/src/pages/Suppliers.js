@@ -9,18 +9,23 @@ import { Link } from "react-router-dom";
 
 const Suppliers = () => {
   const { suppliers, loading, fetchSuppliers } = useGlobalContext();
+  const [page, setPage] = useState(0);
 
-  const handleClick = (id) => {
-    // e.preventDefault();
-    console.log(id);
+  const nextPage = () => {
+    setPage((oldPage) => {
+      let nextPage = oldPage + 1;
+      if (nextPage > suppliers.length - 1) nextPage = 0;
+      return nextPage;
+    });
   };
 
-  useEffect(() => {
-    fetchSuppliers();
-    return () => {
-      // Cleanup
-    };
-  }, []);
+  const prevPage = () => {
+    setPage((oldPage) => {
+      let prevPage = oldPage - 1;
+      if (prevPage < 0) prevPage = suppliers.length - 1;
+      return prevPage;
+    });
+  };
 
   if (loading) return <Loading />;
   return (
@@ -30,7 +35,7 @@ const Suppliers = () => {
         <SideNav />
         <div className="single-page-overview">
           <h1>Suppliers</h1>
-          {suppliers.map((supplier) => {
+          {suppliers[page].map((supplier) => {
             const { name, _id } = supplier;
             return (
               <div className="btnContainer" key={_id}>
@@ -40,6 +45,18 @@ const Suppliers = () => {
               </div>
             );
           })}
+          {suppliers.length < 10 ? (
+            ""
+          ) : (
+            <div className="page-buttons">
+              <button onClick={prevPage} className="page-button">
+                prev
+              </button>
+              <button onClick={nextPage} className="page-button">
+                next
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </main>
