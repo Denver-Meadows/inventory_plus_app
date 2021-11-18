@@ -6,20 +6,29 @@ import Loading from "./Loading";
 import axios from "axios";
 import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 const Inventory = () => {
-  const { inventory, loading, fetchInventory, page } = useGlobalContext();
-  // const [page, setPage] = useState(0);
-  // const [showInventory, setShowInventory] = useState([]);
+  const {
+    inventory,
+    loading,
+    fetchInventory,
+    page,
+    setPage,
+    nextPage,
+    prevPage,
+  } = useGlobalContext();
 
-  // useEffect(() => {
-  //   fetchInventory();
-  //   return () => {
-  //     // Cleanup
-  //   };
-  // }, []);
+  useEffect(() => {
+    fetchInventory();
+    return () => {
+      //cleanup
+    };
+  }, [page]);
 
   if (loading) return <Loading />;
+
+  if (inventory.length < 1) return <Dashboard />;
 
   return (
     <main className="dashboard">
@@ -38,6 +47,10 @@ const Inventory = () => {
               </div>
             );
           })}
+          <div className="hello">
+            <button onClick={prevPage}>prev</button>
+            <button onClick={nextPage}>next</button>
+          </div>
         </div>
       </div>
     </main>
