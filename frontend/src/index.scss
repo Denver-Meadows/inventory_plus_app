@@ -311,3 +311,19 @@ body {
     }
   }
 }
+
+// Page buttons
+.page-button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  background-color: var(--clr-primary-1);
+  padding: 0.3rem 1.7rem;
+  border-radius: 4px;
+  color: var(--clr-primary-3);
+  border: 1px solid var(--clr-primary-4);
+  cursor: pointer;
+}
+
+.page-buttons {
+  margin-left: 2.5rem;
+}

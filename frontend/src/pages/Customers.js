@@ -53,12 +53,16 @@ const Customers = () => {
               </div>
             );
           })}
-          {customers.length < 0 ? (
+          {customers.length < 10 ? (
             ""
           ) : (
             <div className="hello">
-              <button onClick={prevPage}>prev</button>
-              <button onClick={nextPage}>next</button>
+              <button onClick={prevPage} className="page-button">
+                prev
+              </button>
+              <button onClick={nextPage} className="page-button">
+                next
+              </button>
             </div>
           )}
         </div>

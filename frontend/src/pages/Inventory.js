@@ -50,7 +50,7 @@ const Inventory = () => {
             const { name, _id } = item;
             return (
               <div className="btnContainer" key={_id}>
-                <Link to={`/inventory/${_id}`}>
+                <Link to={`/inventory/${_id}`} state={{ page }}>
                   <button className="btnList">{name}</button>
                 </Link>
               </div>
@@ -59,9 +59,13 @@ const Inventory = () => {
           {inventory.length < 0 ? (
             ""
           ) : (
-            <div className="hello">
-              <button onClick={prevPage}>prev</button>
-              <button onClick={nextPage}>next</button>
+            <div className="page-buttons">
+              <button onClick={prevPage} className="page-button">
+                prev
+              </button>
+              <button onClick={nextPage} className="page-button">
+                next
+              </button>
             </div>
           )}
         </div>

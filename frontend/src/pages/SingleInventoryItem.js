@@ -8,9 +8,9 @@ import { useParams, Link } from "react-router-dom";
 ///////// SINGLE INVENTORY ITEM ONLY WORKING BECAUSE I ADDED THE [0] to the filter.
 //////////  I need to get the page across all components
 const SingleInventoryItem = () => {
-  const { inventory, loading, fetchInventory, page } = useGlobalContext();
+  const { inventory, loading, fetchInventory } = useGlobalContext();
   const { id } = useParams();
-  const [item] = inventory[page].filter((item) => item._id === id);
+  const [item] = inventory[0].filter((item) => item._id === id);
 
   useEffect(() => {
     fetchInventory();
@@ -20,7 +20,7 @@ const SingleInventoryItem = () => {
   }, []);
 
   if (loading) return <Loading />;
-  if (!item) return <h1>''</h1>;
+  if (!item) return <h1>'Sorry no items!'</h1>;
   return (
     <main className="dashboard">
       <div className="single-page">
