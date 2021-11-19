@@ -4,16 +4,27 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 ///////// SINGLE INVENTORY ITEM ONLY WORKING BECAUSE I ADDED THE [0] to the filter.
 //////////  I need to get the page across all components
 const SingleInventoryItem = () => {
-  const { inventory, loading, fetchInventory } = useGlobalContext();
+  const { loading } = useGlobalContext();
   const { id } = useParams();
-  const [item] = inventory[0].filter((item) => item._id === id);
+  const [item, setItem] = useState({});
+
+  const getSingleInventoryItem = async (id) => {
+    try {
+      const { data } = await axios.get(`/inventory?ID=${id}`);
+      const [item] = data.filter((item) => item._id === id);
+      setItem(item);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    fetchInventory();
+    getSingleInventoryItem(id);
     return () => {
       // Cleanup
     };

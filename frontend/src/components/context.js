@@ -8,8 +8,6 @@ const AppProvider = ({ children }) => {
   const [customers, setCustomers] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [page, setPage] = useState(0);
-  // const [pagedData, setPagedData] = useState([]);
 
   const paginate = (data) => {
     const itemsPerPage = 10;
@@ -50,7 +48,6 @@ const AppProvider = ({ children }) => {
     setLoading(true);
     try {
       const { data } = await axios.get("/inventory");
-      // setInventory(paginate(data));
       setInventory(paginate(data));
       setLoading(false);
     } catch (error) {
