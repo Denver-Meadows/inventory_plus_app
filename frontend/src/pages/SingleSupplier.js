@@ -9,13 +9,13 @@ import axios from "axios";
 const SingleSupplier = () => {
   const { loading } = useGlobalContext();
   const { id } = useParams();
-  const [supplier, setsupplier] = useState({});
+  const [supplier, setSupplier] = useState({});
 
   const getSingleSupplier = async (id) => {
     try {
       const { data } = await axios.get(`/suppliers?ID=${id}`);
       const [supplier] = data.filter((supplier) => supplier._id === id);
-      setsupplier(supplier);
+      setSupplier(supplier);
     } catch (error) {
       console.log(error);
     }

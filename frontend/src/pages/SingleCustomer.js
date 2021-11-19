@@ -4,14 +4,25 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 const SingleCustomer = () => {
   const { customers, loading, fetchCustomers } = useGlobalContext();
   const { id } = useParams();
-  const [customer] = customers.filter((item) => item._id === id);
+  const [customer, setCustomer] = useState({});
+
+  const getSingleCustomer = async (id) => {
+    try {
+      const { data } = await axios.get(`/customers?ID=${id}`);
+      const [customer] = data.filter((customer) => customer._id === id);
+      setCustomer(customer);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    fetchCustomers();
+    getSingleCustomer(id);
     return () => {
       // Cleanup
     };
