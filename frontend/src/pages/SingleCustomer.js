@@ -44,7 +44,7 @@ const SingleCustomer = () => {
               <p>{`Location: ${customer.city}, ${customer.state}`}</p>
             </div>
             <div className="single-result-btn-container">
-              <Link to={"/suppliers"}>
+              <Link to={"/customers"}>
                 <button>Go Back</button>
               </Link>
               <button>Edit</button>
