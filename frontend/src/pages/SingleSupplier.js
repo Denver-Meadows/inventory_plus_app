@@ -4,25 +4,15 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { getSingleItem } from "../utils";
 
 const SingleSupplier = () => {
   const { loading } = useGlobalContext();
   const { id } = useParams();
   const [supplier, setSupplier] = useState({});
 
-  const getSingleSupplier = async (id) => {
-    try {
-      const { data } = await axios.get(`/suppliers?ID=${id}`);
-      const [supplier] = data.filter((supplier) => supplier._id === id);
-      setSupplier(supplier);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getSingleSupplier(id);
+    getSingleItem(id, "suppliers", setSupplier);
     return () => {
       // Cleanup
     };

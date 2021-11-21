@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const nextPage = (func, data) => {
   func((oldPage) => {
     let nextPage = oldPage + 1;
@@ -12,4 +14,14 @@ export const prevPage = (func, data) => {
     if (prevPage < 0) prevPage = data.length - 1;
     return prevPage;
   });
+};
+
+export const getSingleItem = async (id, path, func) => {
+  try {
+    const { data } = await axios.get(`/${path}?ID=${id}`);
+    const [item] = data.filter((item) => item._id === id);
+    func(item);
+  } catch (error) {
+    console.log(error);
+  }
 };
