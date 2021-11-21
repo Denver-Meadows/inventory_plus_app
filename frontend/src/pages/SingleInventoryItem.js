@@ -4,15 +4,29 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { useParams, Link } from "react-router-dom";
-import { getSingleItem } from "../utils";
+// import { getSingleItem } from "../utils";
+import axios from "axios";
 
 const SingleInventoryItem = () => {
-  const { loading } = useGlobalContext();
+  const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
   const [item, setItem] = useState({});
 
+  const getSingleItem = async (id) => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get(`/inventory/?ID=${id}`);
+      const [item] = await data.filter((item) => item._id === id);
+      setItem(item);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    getSingleItem(id, "inventory", setItem);
+    getSingleItem(id);
     return () => {
       // Cleanup
     };

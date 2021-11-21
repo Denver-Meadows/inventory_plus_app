@@ -71,6 +71,7 @@ const AppProvider = ({ children }) => {
         customers,
         inventory,
         loading,
+        setLoading,
         fetchSuppliers,
         fetchCustomers,
         fetchInventory,

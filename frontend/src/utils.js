@@ -1,4 +1,5 @@
 import axios from "axios";
+import { FcFlashAuto } from "react-icons/fc";
 
 export const nextPage = (func, data) => {
   func((oldPage) => {
@@ -16,12 +17,15 @@ export const prevPage = (func, data) => {
   });
 };
 
-export const getSingleItem = async (id, path, func) => {
+export const getSingleItem = async (id, path, func, loading) => {
+  loading(true);
   try {
     const { data } = await axios.get(`/${path}?ID=${id}`);
-    const [item] = data.filter((item) => item._id === id);
+    const [item] = await data.filter((item) => item._id === id);
     func(item);
+    loading(false);
   } catch (error) {
     console.log(error);
+    loading(false);
   }
 };
