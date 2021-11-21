@@ -1,41 +1,18 @@
 import React, { useState, useEffect } from "react";
-import DashboardLink from "../components/DashboardLink";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
-import axios from "axios";
 import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import Inventory from "./Inventory";
-
-////// Style buttons.  Pass in SingleCustomer component below and pass in page prop.
-/////// or find that id in the db and render data that way.
+import { prevPage, nextPage } from "../utils";
 
 const Customers = () => {
-  const { customers, loading, fetchCustomers } = useGlobalContext();
+  const { customers, loading } = useGlobalContext();
   const [page, setPage] = useState(0);
-
-  const nextPage = () => {
-    setPage((oldPage) => {
-      let nextPage = oldPage + 1;
-      if (nextPage > customers.length - 1) nextPage = 0;
-      console.log(customers.length);
-      return nextPage;
-    });
-  };
-
-  const prevPage = () => {
-    setPage((oldPage) => {
-      let prevPage = oldPage - 1;
-      if (prevPage < 0) prevPage = customers.length - 1;
-      return prevPage;
-    });
-  };
 
   if (loading) return <Loading />;
   if (customers.length < 1) return <Dashboard />;
-
   return (
     <main className="dashboard">
       <div className="single-page">
@@ -57,10 +34,16 @@ const Customers = () => {
             ""
           ) : (
             <div className="hello">
-              <button onClick={prevPage} className="page-button">
+              <button
+                onClick={() => prevPage(setPage, customers)}
+                className="page-button"
+              >
                 prev
               </button>
-              <button onClick={nextPage} className="page-button">
+              <button
+                onClick={() => nextPage(setPage, customers)}
+                className="page-button"
+              >
                 next
               </button>
             </div>
