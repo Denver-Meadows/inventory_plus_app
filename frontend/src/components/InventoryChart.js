@@ -30,8 +30,7 @@ function InventoryChart() {
 
 export default InventoryChart;
 
-{
-  /* <Chart
+/* <Chart
 className="inventory-chart"
 chartType="LineChart"
 loader={<div>Loading Chart</div>}
@@ -59,4 +58,3 @@ options={{
 }}
 rootProps={{ "data-testid": "2" }}
 /> */
-}
