@@ -5,7 +5,6 @@ function ProductDetails() {
   const { inventory } = useGlobalContext();
 
   const numOfItems = inventory.flat(1);
-  console.log(numOfItems);
 
   const getNumOfCategories = (items) => {
     const cates = items.map((item) => {
@@ -13,6 +12,13 @@ function ProductDetails() {
       if (item.category) return item.category;
     });
     return [...new Set(cates)].length;
+  };
+
+  const getNumItemsLowStock = (items) => {
+    const lowItems = items.map((item) => {
+      if (item.qtyOnHand < 3) return item.qtyOnHand;
+    });
+    return lowItems.length;
   };
 
   return (
@@ -29,7 +35,7 @@ function ProductDetails() {
         </div>
         <div className="product-details-item">
           <p>Items with Low Stock</p>
-          <p>2</p>
+          <p>{getNumItemsLowStock(inventory)}</p>
         </div>
       </div>
     </article>
