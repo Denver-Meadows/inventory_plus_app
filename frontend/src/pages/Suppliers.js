@@ -5,12 +5,14 @@ import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
 import { prevPage, nextPage } from "../utils";
+import Dashboard from "./Dashboard";
 
 const Suppliers = () => {
   const { suppliers, loading, fetchSuppliers } = useGlobalContext();
   const [page, setPage] = useState(0);
 
   if (loading) return <Loading />;
+  if (suppliers.length < 1) return <Dashboard />;
   return (
     <main className="dashboard">
       <div className="single-page">

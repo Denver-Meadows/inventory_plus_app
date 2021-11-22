@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 
+// i have a data leak and will need to most likely switch to useReducer to fix this.
+
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -8,6 +10,7 @@ const AppProvider = ({ children }) => {
   const [customers, setCustomers] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [onOrder, setOnOrder] = useState(25);
 
   const paginate = (data) => {
     const itemsPerPage = 10;
@@ -71,6 +74,7 @@ const AppProvider = ({ children }) => {
         customers,
         inventory,
         loading,
+        onOrder,
         setLoading,
         fetchSuppliers,
         fetchCustomers,
