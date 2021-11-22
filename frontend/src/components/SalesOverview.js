@@ -9,7 +9,7 @@ function SalesOverview() {
   return (
     <main className="dashboard-content-sales">
       <article className="sales-purchases-overview">
-        <h4>Sales Overview</h4>
+        <h4>Projected Sales Data</h4>
         <div className="sales-purchases-overview-items">
           <div className="sales-purchases-overview-items-item">
             <div className="sales-purchases-overview-item-icon">
