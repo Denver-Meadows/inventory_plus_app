@@ -5,18 +5,20 @@ function ProductDetails() {
 
   const numOfItems = inventory.flat(1);
 
+  // const getNumOfCategories = (items) => {
+  //   const cates = items.map((item) => {
+  //     if (!item.category) return;
+  //     if (item.category) return item.category;
+  //   });
+  //   return [...new Set(cates)].length;
+  // };
   const getNumOfCategories = (items) => {
-    const cates = items.map((item) => {
-      if (!item.category) return;
-      if (item.category) return item.category;
-    });
+    const cates = items.map((item) => item.category);
     return [...new Set(cates)].length;
   };
 
   const getNumItemsLowStock = (items) => {
-    const lowItems = items.map((item) => {
-      if (item.qtyOnHand < 3) return item.qtyOnHand;
-    });
+    const lowItems = items.filter((item) => item.qtyOnHand < 3);
     return lowItems.length;
   };
 
@@ -34,7 +36,7 @@ function ProductDetails() {
         </div>
         <div className="product-details-item">
           <p>Items with Low Stock</p>
-          <p>{getNumItemsLowStock(inventory)}</p>
+          <p>{getNumItemsLowStock(numOfItems)}</p>
         </div>
       </div>
     </article>
