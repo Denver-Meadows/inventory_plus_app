@@ -4,7 +4,6 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { useParams, Link } from "react-router-dom";
-// import { getSingleItem } from "../utils";
 import axios from "axios";
 
 const SingleInventoryItem = () => {

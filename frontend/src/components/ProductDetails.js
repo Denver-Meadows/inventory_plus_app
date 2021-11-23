@@ -5,13 +5,6 @@ function ProductDetails() {
 
   const numOfItems = inventory.flat(1);
 
-  // const getNumOfCategories = (items) => {
-  //   const cates = items.map((item) => {
-  //     if (!item.category) return;
-  //     if (item.category) return item.category;
-  //   });
-  //   return [...new Set(cates)].length;
-  // };
   const getNumOfCategories = (items) => {
     const cates = items.map((item) => item.category);
     return [...new Set(cates)].length;

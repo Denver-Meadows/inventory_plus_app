@@ -32,7 +32,7 @@ const Inventory = () => {
             const { name, _id } = item;
             return (
               <div className="btnContainer" key={_id}>
-                <Link to={`/inventory/${_id}`} state={{ page }}>
+                <Link to={`/inventory/${_id}`}>
                   <button className="btnList">{name}</button>
                 </Link>
               </div>
