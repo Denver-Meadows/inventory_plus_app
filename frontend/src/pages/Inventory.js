@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
@@ -8,15 +8,16 @@ import Dashboard from "./Dashboard";
 import { prevPage, nextPage } from "../utils";
 
 const Inventory = () => {
-  const { inventory, loading } = useGlobalContext();
+  const { inventory, loading, fetchInventory } = useGlobalContext();
   const [page, setPage] = useState(0);
+  const isMountedRef = useRef(true);
 
-  // useEffect(() => {
-  //   fetchInventory();
-  //   return () => {
-  //     //cleanup
-  //   };
-  // }, [page]);
+  useEffect(() => {
+    if (isMountedRef.current) fetchInventory();
+    return () => {
+      isMountedRef.current = false;
+    };
+  });
 
   if (loading) return <Loading />;
   if (inventory.length < 1) return <Dashboard />;

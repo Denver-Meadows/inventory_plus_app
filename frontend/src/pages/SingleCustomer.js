@@ -26,7 +26,10 @@ const SingleCustomer = () => {
 
   useEffect(() => {
     getSingleItem(id);
-  });
+    return () => {
+      // Cleanup
+    };
+  }, [id]);
 
   if (loading) return <Loading />;
   if (!customer) return <h1>''</h1>;

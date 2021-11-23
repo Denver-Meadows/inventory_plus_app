@@ -61,7 +61,10 @@ const AppProvider = ({ children }) => {
     fetchInventory();
     fetchCustomers();
     fetchSuppliers();
-  });
+    return () => {
+      // cleanup
+    };
+  }, []);
 
   return (
     <AppContext.Provider

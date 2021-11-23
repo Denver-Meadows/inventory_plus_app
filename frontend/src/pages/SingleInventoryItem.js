@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
@@ -12,22 +12,28 @@ const SingleInventoryItem = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
 
-  const getSingleItem = async (id) => {
-    setLoading(true);
-    try {
-      const { data } = await axios.get(`/inventory/?ID=${id}`);
-      const [item] = await data.filter((item) => item._id === id);
-      setItem(item);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+  const getSingleItem = useCallback(
+    async (id) => {
+      setLoading(true);
+      try {
+        const { data } = await axios.get(`/inventory/?ID=${id}`);
+        const [item] = await data.filter((item) => item._id === id);
+        setItem(item);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    },
+    [setLoading]
+  );
 
   useEffect(() => {
     getSingleItem(id);
-  });
+    return () => {
+      // Cleanup
+    };
+  }, [id, getSingleItem]);
 
   if (loading) return <Loading />;
   if (!item) return <h1>'Sorry no items!'</h1>;
