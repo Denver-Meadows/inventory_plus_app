@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
@@ -8,8 +8,16 @@ import { prevPage, nextPage } from "../utils";
 import Dashboard from "./Dashboard";
 
 const Suppliers = () => {
-  const { suppliers, loading, fetchSuppliers } = useGlobalContext();
+  const { suppliers, loading, fetchSuppliers, mounted } = useGlobalContext();
   const [page, setPage] = useState(0);
+  let componentMounted = true;
+
+  useEffect(() => {
+    if (componentMounted) fetchSuppliers();
+    return () => {
+      componentMounted = false;
+    };
+  }, []);
 
   if (loading) return <Loading />;
   if (suppliers.length < 1) return <Dashboard />;

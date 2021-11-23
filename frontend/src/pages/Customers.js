@@ -8,8 +8,16 @@ import Dashboard from "./Dashboard";
 import { prevPage, nextPage } from "../utils";
 
 const Customers = () => {
-  const { customers, loading } = useGlobalContext();
+  const { customers, loading, fetchCustomers } = useGlobalContext();
   const [page, setPage] = useState(0);
+  let componentMounted = true;
+
+  useEffect(() => {
+    if (componentMounted) fetchCustomers();
+    return () => {
+      componentMounted = false;
+    };
+  }, []);
 
   if (loading) return <Loading />;
   if (customers.length < 1) return <Dashboard />;
