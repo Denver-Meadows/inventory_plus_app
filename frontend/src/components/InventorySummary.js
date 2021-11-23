@@ -26,7 +26,7 @@ function InventorySummary() {
         <div className="inventory-overview-article-content-summary">
           <FcShipped className="inventory-icon" />
           <p>To be Received</p>
-          <h3>{`${onOrder} items`}</h3>
+          <h3>{`${onOrder.current} items`}</h3>
         </div>
       </div>
     </article>

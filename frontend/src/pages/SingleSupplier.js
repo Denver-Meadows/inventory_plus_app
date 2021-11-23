@@ -26,10 +26,7 @@ const SingleSupplier = () => {
 
   useEffect(() => {
     getSingleItem(id);
-    return () => {
-      // Cleanup
-    };
-  }, []);
+  });
 
   if (loading) return <Loading />;
   if (!supplier) return <h1>''</h1>;

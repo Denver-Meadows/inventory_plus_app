@@ -27,10 +27,7 @@ const SingleInventoryItem = () => {
 
   useEffect(() => {
     getSingleItem(id);
-    return () => {
-      // Cleanup
-    };
-  }, [id]);
+  });
 
   if (loading) return <Loading />;
   if (!item) return <h1>'Sorry no items!'</h1>;
