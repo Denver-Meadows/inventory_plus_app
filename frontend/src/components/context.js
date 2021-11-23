@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+} from "react";
 import axios from "axios";
 
 const AppContext = React.createContext();
@@ -23,7 +29,7 @@ const AppProvider = ({ children }) => {
     return paginatedData;
   };
 
-  const fetchSuppliers = async () => {
+  const fetchSuppliers = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await axios.get("/suppliers");
@@ -33,9 +39,9 @@ const AppProvider = ({ children }) => {
       console.log(error);
       setLoading(false);
     }
-  };
+  }, [setLoading]);
 
-  const fetchCustomers = async () => {
+  const fetchCustomers = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await axios.get("/customers");
@@ -44,9 +50,9 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       setLoading(false);
     }
-  };
+  }, [setLoading]);
 
-  const fetchInventory = async () => {
+  const fetchInventory = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await axios.get("/inventory");
@@ -55,7 +61,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       setLoading(false);
     }
-  };
+  }, [setLoading]);
 
   useEffect(() => {
     fetchInventory();
@@ -64,7 +70,7 @@ const AppProvider = ({ children }) => {
     return () => {
       // cleanup
     };
-  }, []);
+  }, [fetchInventory, fetchSuppliers, fetchCustomers]);
 
   return (
     <AppContext.Provider
