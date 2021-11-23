@@ -8,16 +8,16 @@ import { prevPage, nextPage } from "../utils";
 import Dashboard from "./Dashboard";
 
 const Suppliers = () => {
-  const { suppliers, loading, fetchSuppliers, mounted } = useGlobalContext();
+  const { suppliers, loading, fetchSuppliers } = useGlobalContext();
   const [page, setPage] = useState(0);
-  let componentMounted = true;
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
-    if (componentMounted) fetchSuppliers();
+    if (isMountedRef.current) fetchSuppliers();
     return () => {
-      componentMounted = false;
+      isMountedRef.current = false;
     };
-  }, []);
+  });
 
   if (loading) return <Loading />;
   if (suppliers.length < 1) return <Dashboard />;

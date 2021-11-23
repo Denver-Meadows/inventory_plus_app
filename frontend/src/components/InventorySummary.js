@@ -1,10 +1,8 @@
-import { BiArrowFromBottom } from "react-icons/bi";
 import { FcComboChart, FcShipped } from "react-icons/fc";
 import { useGlobalContext } from "./context";
-import { useEffect } from "react";
 
 function InventorySummary() {
-  const { inventory, onOrder, fetchInventory } = useGlobalContext();
+  const { inventory, onOrder } = useGlobalContext();
 
   const allItems = inventory.flat(1);
 
@@ -15,13 +13,6 @@ function InventorySummary() {
       .reduce((prev, next) => next + prev);
     return total;
   };
-
-  // useEffect(() => {
-  //   fetchInventory();
-  //   return () => {
-  //     //cleanup
-  //   };
-  // }, []);
 
   return (
     <article className="dashboard-content-inventory-summary inventory-overview-article">

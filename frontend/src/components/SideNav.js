@@ -1,5 +1,5 @@
 import { MdOutlineDashboard } from "react-icons/md";
-import { BsBox, BsCartCheck, BsPeople } from "react-icons/bs";
+import { BsBox, BsPeople } from "react-icons/bs";
 import { BiBuildings } from "react-icons/bi";
 import { Link } from "react-router-dom";
 

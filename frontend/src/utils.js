@@ -1,5 +1,4 @@
 import axios from "axios";
-import { FcFlashAuto } from "react-icons/fc";
 
 export const nextPage = (func, data) => {
   func((oldPage) => {

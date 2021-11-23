@@ -1,4 +1,3 @@
-import { FcComboChart, FcShipped } from "react-icons/fc";
 import { useGlobalContext } from "./context";
 
 function ProductDetails() {

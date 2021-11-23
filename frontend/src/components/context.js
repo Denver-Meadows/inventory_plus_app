@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-  useRef,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 // i have a data leak and will need to most likely switch to useReducer to fix this.
@@ -65,14 +59,11 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      fetchInventory();
-      fetchCustomers();
-      fetchSuppliers();
-    }
+    fetchInventory();
+    fetchCustomers();
+    fetchSuppliers();
     return () => {
-      mounted = false;
+      // cleanup
     };
   }, []);
 

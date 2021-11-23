@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
@@ -10,14 +10,14 @@ import { prevPage, nextPage } from "../utils";
 const Customers = () => {
   const { customers, loading, fetchCustomers } = useGlobalContext();
   const [page, setPage] = useState(0);
-  let componentMounted = true;
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
-    if (componentMounted) fetchCustomers();
+    if (isMountedRef.current) fetchCustomers();
     return () => {
-      componentMounted = false;
+      isMountedRef.current = false;
     };
-  }, []);
+  });
 
   if (loading) return <Loading />;
   if (customers.length < 1) return <Dashboard />;

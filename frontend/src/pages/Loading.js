@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 
@@ -9,7 +8,7 @@ const Loading = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1 className="loading"></h1>
+          <div className="loading"></div>
         </div>
       </div>
     </main>

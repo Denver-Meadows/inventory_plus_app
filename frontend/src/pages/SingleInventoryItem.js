@@ -30,7 +30,7 @@ const SingleInventoryItem = () => {
     return () => {
       // Cleanup
     };
-  }, []);
+  }, [id]);
 
   if (loading) return <Loading />;
   if (!item) return <h1>'Sorry no items!'</h1>;
