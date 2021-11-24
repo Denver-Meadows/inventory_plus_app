@@ -34,7 +34,7 @@ function SalesOverview() {
               <FcBearish />
             </div>
             <div className="sales-purchases-overview-item-stats">
-              <p>Current Cost</p>
+              <p>Total Cost</p>
               <h3>$5384</h3>
             </div>
           </div>
