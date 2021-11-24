@@ -11,8 +11,8 @@ function PurchaseOverview() {
               <FcBarChart />
             </div>{" "}
             <div className="sales-purchases-overview-item-stats">
-              <p>Total Purchases</p>
-              <h3>86</h3>
+              <p>Average Cost</p>
+              <h3>$150</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">

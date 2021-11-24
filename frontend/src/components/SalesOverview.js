@@ -25,8 +25,8 @@ function SalesOverview() {
               <FcBullish />
             </div>
             <div className="sales-purchases-overview-item-stats">
-              <p>Revenue</p>
-              <h3>$7384</h3>
+              <p>Gross Margin</p>
+              <h3>22%</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -34,7 +34,7 @@ function SalesOverview() {
               <FcBearish />
             </div>
             <div className="sales-purchases-overview-item-stats">
-              <p>Cost</p>
+              <p>Current Cost</p>
               <h3>$5384</h3>
             </div>
           </div>
