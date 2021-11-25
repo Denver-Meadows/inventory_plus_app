@@ -30,8 +30,10 @@ function SalesOverview() {
     const total = arr
       .map((item) => item.qtyOnHand * item.cost)
       .reduce((prev, next) => next + prev);
-    return formatter.format(total);
+    return total;
   };
+
+  // formatter.format(total)
 
   const getProfit = () => {
     return getTotalSales(allItems) - getTotalCost(allItems);
@@ -41,8 +43,6 @@ function SalesOverview() {
     const gm = getProfit() / getTotalSales(allItems);
     return gm.toFixed(2) * 100;
   };
-
-  console.log(getTotalCost(allItems));
 
   return (
     <main className="dashboard-content-sales">
@@ -55,7 +55,7 @@ function SalesOverview() {
             </div>{" "}
             <div className="sales-purchases-overview-item-stats">
               <p>Total Sales</p>
-              <h3>{`$${getTotalSales(allItems)}`}</h3>
+              <h3>{formatter.format(getTotalSales(allItems))}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -73,7 +73,7 @@ function SalesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Total Cost</p>
-              <h3>{getTotalCost(allItems)}</h3>
+              <h3>{formatter.format(getTotalCost(allItems))}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -82,7 +82,7 @@ function SalesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Profit</p>
-              <h3>{`$${getProfit()}`}</h3>
+              <h3>{formatter.format(getProfit())}</h3>
             </div>
           </div>
         </div>
