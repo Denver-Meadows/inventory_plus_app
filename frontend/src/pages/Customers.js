@@ -27,7 +27,10 @@ const Customers = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>Customers</h1>
+          <div className="page-header">
+            <h1>Customers</h1>
+            <button className="add-btn">Add Customer</button>
+          </div>
           {customers[page].map((customer) => {
             const { name, _id } = customer;
             return (

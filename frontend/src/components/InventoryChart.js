@@ -9,7 +9,7 @@ function InventoryChart() {
           loader={<div>Loading Chart</div>}
           data={[
             ["Year", "Sales", "Expenses"],
-            ["Q1", 1000, 500],
+            ["Q1", 1000, 550],
             ["Q2", 1170, 760],
             ["Q3", 900, 750],
             ["Q4", 1030, 620],

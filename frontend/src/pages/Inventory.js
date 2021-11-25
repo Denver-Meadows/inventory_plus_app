@@ -27,7 +27,10 @@ const Inventory = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>Inventory</h1>
+          <div className="page-header">
+            <h1>Inventory</h1>
+            <button className="add-btn">Add Item</button>
+          </div>
           {inventory[page].map((item) => {
             const { name, _id } = item;
             return (
