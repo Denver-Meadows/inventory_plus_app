@@ -1,14 +1,9 @@
 import { useGlobalContext } from "./context";
+import { getNumOfCategories } from "../utils";
 
 function ProductDetails() {
   const { inventory } = useGlobalContext();
-
   const numOfItems = inventory.flat(1);
-
-  const getNumOfCategories = (items) => {
-    const cates = items.map((item) => item.category);
-    return [...new Set(cates)].length;
-  };
 
   const getNumItemsLowStock = (items) => {
     const lowItems = items.filter((item) => item.qtyOnHand < 3);

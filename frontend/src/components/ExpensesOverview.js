@@ -1,17 +1,28 @@
 import { useGlobalContext } from "./context";
-import { formatter } from "../utils";
-import { FcBarChart, FcCancel, FcBearish, FcLeft } from "react-icons/fc";
+import { formatter, getNumOfCategories } from "../utils";
+import { FcBarChart, FcCancel, FcLeft } from "react-icons/fc";
 
 function ExpensesOverview() {
   const { inventory } = useGlobalContext();
   const allItems = inventory.flat(1);
+  const categories = getNumOfCategories(allItems);
 
-  const getAvgCostPerItem = (arr) => {
+  const getAvgCost = (arr) => {
     if (arr.length === 0) return;
     const total = arr
       .map((item) => item.cost)
       .reduce((prev, next) => next + prev);
-    return total / allItems.length;
+    return total;
+  };
+
+  const costPerItem = () => {
+    if (allItems.length === 0) return;
+    return getAvgCost(allItems) / allItems.length;
+  };
+
+  const costPerCat = () => {
+    if (allItems.length === 0) return;
+    return getAvgCost(allItems) / categories;
   };
 
   return (
@@ -25,7 +36,7 @@ function ExpensesOverview() {
             </div>{" "}
             <div className="sales-purchases-overview-item-stats">
               <p>Cost per Item</p>
-              <h3>{formatter.format(getAvgCostPerItem(allItems))}</h3>
+              <h3>{formatter.format(costPerItem())}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -43,7 +54,7 @@ function ExpensesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Cost per Category</p>
-              <h3>$5384</h3>
+              <h3>{formatter.format(costPerCat())}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">

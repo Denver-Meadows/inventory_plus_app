@@ -8,6 +8,11 @@ export const nextPage = (func, data) => {
   });
 };
 
+export const getNumOfCategories = (items) => {
+  const cates = items.map((item) => item.category);
+  return [...new Set(cates)].length;
+};
+
 export const prevPage = (func, data) => {
   func((oldPage) => {
     let prevPage = oldPage - 1;
