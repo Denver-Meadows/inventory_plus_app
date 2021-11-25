@@ -9,10 +9,10 @@ function InventoryChart() {
           loader={<div>Loading Chart</div>}
           data={[
             ["Year", "Sales", "Expenses"],
-            ["Q1", 1000, 400],
-            ["Q2", 1170, 460],
-            ["Q3", 660, 1120],
-            ["Q4", 1030, 540],
+            ["Q1", 1000, 500],
+            ["Q2", 1170, 760],
+            ["Q3", 900, 750],
+            ["Q4", 1030, 620],
           ]}
           options={{
             title: "Company Performance",
