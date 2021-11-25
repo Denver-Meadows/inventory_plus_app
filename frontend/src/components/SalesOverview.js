@@ -7,7 +7,7 @@ import {
 } from "react-icons/fc";
 
 function SalesOverview() {
-  const { inventory } = useGlobalContext();
+  const { inventory, loading, setLoading } = useGlobalContext();
 
   const allItems = inventory.flat(1);
 
@@ -32,8 +32,6 @@ function SalesOverview() {
       .reduce((prev, next) => next + prev);
     return total;
   };
-
-  // formatter.format(total)
 
   const getProfit = () => {
     return getTotalSales(allItems) - getTotalCost(allItems);
