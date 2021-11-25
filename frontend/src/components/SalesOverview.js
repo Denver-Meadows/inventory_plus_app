@@ -1,3 +1,4 @@
+import { useGlobalContext } from "./context";
 import {
   FcSalesPerformance,
   FcBullish,
@@ -6,6 +7,43 @@ import {
 } from "react-icons/fc";
 
 function SalesOverview() {
+  const { inventory } = useGlobalContext();
+
+  const allItems = inventory.flat(1);
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+
+  const getTotalSales = (arr) => {
+    if (arr.length === 0) return;
+    const total = arr
+      .map((item) => item.qtyOnHand * item.sellPrice)
+      .reduce((prev, next) => next + prev);
+    return total;
+  };
+
+  const getTotalCost = (arr) => {
+    if (arr.length === 0) return;
+    const total = arr
+      .map((item) => item.qtyOnHand * item.cost)
+      .reduce((prev, next) => next + prev);
+    return formatter.format(total);
+  };
+
+  const getProfit = () => {
+    return getTotalSales(allItems) - getTotalCost(allItems);
+  };
+
+  const getGrossMargin = () => {
+    const gm = getProfit() / getTotalSales(allItems);
+    return gm.toFixed(2) * 100;
+  };
+
+  console.log(getTotalCost(allItems));
+
   return (
     <main className="dashboard-content-sales">
       <article className="sales-purchases-overview">
@@ -17,7 +55,7 @@ function SalesOverview() {
             </div>{" "}
             <div className="sales-purchases-overview-item-stats">
               <p>Total Sales</p>
-              <h3>$786</h3>
+              <h3>{`$${getTotalSales(allItems)}`}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -26,7 +64,7 @@ function SalesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Gross Margin</p>
-              <h3>22%</h3>
+              <h3>{`${getGrossMargin()}%`}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -35,7 +73,7 @@ function SalesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Total Cost</p>
-              <h3>$5384</h3>
+              <h3>{getTotalCost(allItems)}</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
@@ -44,7 +82,7 @@ function SalesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Profit</p>
-              <h3>$500</h3>
+              <h3>{`$${getProfit()}`}</h3>
             </div>
           </div>
         </div>
