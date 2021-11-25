@@ -322,6 +322,14 @@ body {
   color: var(--clr-primary-3);
   border: 1px solid var(--clr-primary-4);
   cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 }
 
 .page-buttons {
@@ -331,15 +339,24 @@ body {
 .page-header {
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
 }
 
 .add-btn {
-  margin: 1rem 1rem 0.3rem 2rem;
+  margin: 1rem 10rem 0.3rem 2rem;
   background-color: var(--clr-primary-1);
-  padding: 0.3rem 1.7rem;
+  padding: 0rem 1.7rem;
   border-radius: 4px;
   color: var(--clr-primary-3);
   border: 1px solid var(--clr-primary-4);
   cursor: pointer;
-  height: 1.8rem;
+  height: 2rem;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 }
