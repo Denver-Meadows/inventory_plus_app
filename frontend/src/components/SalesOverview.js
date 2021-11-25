@@ -1,4 +1,5 @@
 import { useGlobalContext } from "./context";
+import { formatter } from "../utils";
 import {
   FcSalesPerformance,
   FcBullish,
@@ -7,15 +8,9 @@ import {
 } from "react-icons/fc";
 
 function SalesOverview() {
-  const { inventory, loading, setLoading } = useGlobalContext();
+  const { inventory } = useGlobalContext();
 
   const allItems = inventory.flat(1);
-
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  });
 
   const getTotalSales = (arr) => {
     if (arr.length === 0) return;

@@ -16,6 +16,12 @@ export const prevPage = (func, data) => {
   });
 };
 
+export const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+});
+
 export const getSingleItem = async (id, path, func, loading) => {
   loading(true);
   try {

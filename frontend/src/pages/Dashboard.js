@@ -1,7 +1,7 @@
 import SideNav from "../components/SideNav";
 import TopInfoBar from "../components/TopInfoBar";
 import SalesOverview from "../components/SalesOverview";
-import PurchaseOverview from "../components/PurchaseOverview";
+import ExpensesOverview from "../components/ExpensesOverview";
 // import InventoryOverview from "./components/InventoryOverview";
 import InventoryChart from "../components/InventoryChart";
 import ProductDetails from "../components/ProductDetails";
@@ -18,7 +18,7 @@ function Dashboard() {
         <NumOfUsers />
         <InventorySummary />
         <SalesOverview />
-        <PurchaseOverview />
+        <ExpensesOverview />
         <InventoryChart />
       </div>
     </main>
