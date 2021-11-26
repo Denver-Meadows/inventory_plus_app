@@ -29,7 +29,9 @@ const Suppliers = () => {
         <div className="single-page-overview">
           <div className="page-header">
             <h1>Suppliers</h1>
-            <button className="add-btn">Add Supplier</button>
+            <Link to={"suppliers/new"}>
+              <button className="add-btn">Add Supplier</button>
+            </Link>
           </div>
           {suppliers[page].map((supplier) => {
             const { name, _id } = supplier;

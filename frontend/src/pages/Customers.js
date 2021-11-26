@@ -29,7 +29,9 @@ const Customers = () => {
         <div className="single-page-overview">
           <div className="page-header">
             <h1>Customers</h1>
-            <button className="add-btn">Add Customer</button>
+            <Link to={"customers/new"}>
+              <button className="add-btn">Add Customer</button>
+            </Link>
           </div>
           {customers[page].map((customer) => {
             const { name, _id } = customer;
