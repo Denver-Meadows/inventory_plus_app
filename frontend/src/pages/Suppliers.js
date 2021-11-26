@@ -28,7 +28,7 @@ const Suppliers = () => {
         <SideNav />
         <div className="single-page-overview">
           <div className="page-header">
-            <h1>Customers</h1>
+            <h1>Suppliers</h1>
             <button className="add-btn">Add Supplier</button>
           </div>
           {suppliers[page].map((supplier) => {

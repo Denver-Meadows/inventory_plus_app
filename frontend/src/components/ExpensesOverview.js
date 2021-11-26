@@ -45,7 +45,7 @@ function ExpensesOverview() {
             </div>
             <div className="sales-purchases-overview-item-stats">
               <p>Cancellations</p>
-              <h3>41</h3>
+              <h3>8</h3>
             </div>
           </div>
           <div className="sales-purchases-overview-items-item">
