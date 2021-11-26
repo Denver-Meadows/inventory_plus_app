@@ -19,7 +19,7 @@ const NewCustomer = () => {
               <Link to={"/customers"}>
                 <button>Go Back</button>
               </Link>
-              <button>Add</button>
+              <button type="submit">Add</button>
             </div>
           </div>
         </div>
