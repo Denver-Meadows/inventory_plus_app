@@ -22,8 +22,8 @@ const CreateSupplierForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    setFormData(initialFormData);
-    // submit to DB
+    // submit to DB - make sure validations are working
+    // clear formData and actual fields
   };
 
   return (
