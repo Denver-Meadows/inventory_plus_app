@@ -1,7 +1,6 @@
 import React from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
-import { Link } from "react-router-dom";
 import CreateSupplierForm from "../components/CreateSupplierForm";
 
 const CreateSupplier = () => {
