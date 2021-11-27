@@ -28,7 +28,18 @@ const SingleSupplier = () => {
   );
 
   const handleDelete = () => {
-    axios.delete(`http://localhost:3001/suppliers/delete-supplier/${id}`);
+    const result = window.confirm(
+      "Are you sure you want to delete this entry?"
+    );
+    if (result) {
+      axios
+        .delete(`http://localhost:3001/suppliers/delete-supplier/${id}`)
+        .then((res) => {
+          if (res.status === 200) {
+            window.location.href = "/suppliers";
+          }
+        });
+    }
   };
 
   useEffect(() => {
@@ -58,9 +69,7 @@ const SingleSupplier = () => {
                 <button>Go Back</button>
               </Link>
               <button>Edit</button>
-              <Link to={"/suppliers"}>
-                <button onClick={handleDelete}>Delete</button>
-              </Link>
+              <button onClick={handleDelete}>Delete</button>
             </div>
           </div>
         </div>

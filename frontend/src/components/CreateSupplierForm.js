@@ -22,7 +22,6 @@ const CreateSupplierForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
     // submit to DB - make sure validations are working
     axios
       .post("http://localhost:3001/suppliers/create-supplier", formData)
