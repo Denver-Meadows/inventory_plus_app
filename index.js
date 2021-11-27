@@ -1,16 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const port = 3001;
-const app = express();
 
 // Import customerRoute
 const customerRoute = require("./routes/customerRoute");
 const inventoryRoute = require("./routes/inventoryRoute");
 const supplierRoute = require("./routes/supplierRoute");
-
-app.use(cors());
 
 // connect to mongo with mongoose
 mongoose
@@ -26,12 +24,10 @@ mongoose
     console.log(err);
   });
 
-// ROUTES
-// app.get("/", (req, res) => {
-//   console.log("home page");
-//   res.send("home page");
-// });
-
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use("/customers", customerRoute);
 app.use("/inventory", inventoryRoute);
 app.use("/suppliers", supplierRoute);
