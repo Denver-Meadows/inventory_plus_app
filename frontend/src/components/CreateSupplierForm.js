@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const NewCustomerSupplierForm = () => {
+const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  city: "",
+  state: "",
+};
+
+const CreateSupplierForm = () => {
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("add");
+    console.log(formData);
+    setFormData(initialFormData);
+    // submit to DB
   };
+
   return (
     <form className="add-new-form">
       <div className="add-new-form-control">
@@ -14,8 +34,9 @@ const NewCustomerSupplierForm = () => {
           type="text"
           id="name"
           name="name"
+          required
           // value={person.firstName}
-          // onChange={handleChange}
+          onChange={handleChange}
         />
       </div>
       <div className="add-new-form-control">
@@ -24,8 +45,9 @@ const NewCustomerSupplierForm = () => {
           type="email"
           id="email"
           name="email"
+          required
           // value={person.firstName}
-          // onChange={handleChange}
+          onChange={handleChange}
         />
       </div>
       <div className="add-new-form-control">
@@ -34,8 +56,9 @@ const NewCustomerSupplierForm = () => {
           type="text"
           id="phone"
           name="phone"
+          required
           // value={person.firstName}
-          // onChange={handleChange}
+          onChange={handleChange}
         />
       </div>
       <div className="add-new-form-control">
@@ -44,8 +67,9 @@ const NewCustomerSupplierForm = () => {
           type="text"
           id="city"
           name="city"
+          required
           // value={person.firstName}
-          // onChange={handleChange}
+          onChange={handleChange}
         />
       </div>
       <div className="add-new-form-control">
@@ -54,8 +78,9 @@ const NewCustomerSupplierForm = () => {
           type="text"
           id="state"
           name="state"
+          required
           // value={person.firstName}
-          // onChange={handleChange}
+          onChange={handleChange}
         />
       </div>
       <div className="add-new-btn-container">
@@ -70,4 +95,4 @@ const NewCustomerSupplierForm = () => {
   );
 };
 
-export default NewCustomerSupplierForm;
+export default CreateSupplierForm;

@@ -2,11 +2,10 @@ import React from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import { Link } from "react-router-dom";
-import NewCustomerSupplierForm from "../components/NewCustomerSupplierForm";
+import CreateSupplierForm from "../components/CreateSupplierForm";
 
-const NewSupplier = () => {
+const CreateSupplier = () => {
   return (
-    //name, email, phone, city, state
     <main className="dashboard">
       <div className="single-page">
         <TopInfoBar />
@@ -14,7 +13,7 @@ const NewSupplier = () => {
         <div className="single-page-overview">
           <h1>Add New Supplier</h1>
           <div className="add-new">
-            <NewCustomerSupplierForm />
+            <CreateSupplierForm />
           </div>
         </div>
       </div>
@@ -22,4 +21,4 @@ const NewSupplier = () => {
   );
 };
 
-export default NewSupplier;
+export default CreateSupplier;
