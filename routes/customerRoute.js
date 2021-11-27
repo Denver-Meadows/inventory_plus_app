@@ -33,7 +33,7 @@ router.route("/edit-customer/:id").get((req, res) => {
     if (error) return next(error);
     else {
       console.log(data);
-      // res.json(data)
+      res.json(data);
     }
   });
 });
@@ -52,7 +52,7 @@ router.route("/update-customer/:id").put((req, res, next) => {
       } else {
         console.log(data);
         console.log("Student updated successfully");
-        // res.json(data)
+        res.json(data);
       }
     }
   );

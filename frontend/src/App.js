@@ -10,6 +10,7 @@ import SingleCustomer from "./pages/SingleCustomer";
 import SingleInventoryItem from "./pages/SingleInventoryItem";
 import CreateCustomer from "./pages/CreateCustomer";
 import CreateSupplier from "./pages/CreateSupplier";
+import SingleCustomerEdit from "./pages/SingleCustomerEdit";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
       </Route>
       <Route exact path="/customers/:id">
         <SingleCustomer />
+      </Route>
+      <Route exact path="/customers/:id/edit">
+        <SingleCustomerEdit />
       </Route>
       <Route exact path="/inventory/:id">
         <SingleInventoryItem />
