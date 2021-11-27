@@ -43,7 +43,7 @@ const Suppliers = () => {
               </div>
             );
           })}
-          {suppliers.length < 10 ? (
+          {suppliers.length === 1 ? (
             ""
           ) : (
             <div className="page-buttons">

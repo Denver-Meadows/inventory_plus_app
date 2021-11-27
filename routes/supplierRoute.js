@@ -7,10 +7,12 @@ const supplier = require("../models/supplier");
 // Create Supplier
 router.route("/create-supplier").post((req, res, next) => {
   supplier.create(req.body, (error, data) => {
-    if (error) return next(error);
-    else {
+    if (error) {
+      console.log(error);
+      return next(error);
+    } else {
       console.log(data);
-      // res.json(data)
+      res.json(data);
     }
   });
 });

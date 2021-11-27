@@ -43,10 +43,10 @@ const Customers = () => {
               </div>
             );
           })}
-          {customers.length < 10 ? (
+          {customers.length === 1 ? (
             ""
           ) : (
-            <div className="hello">
+            <div className="page-buttons">
               <button
                 onClick={() => prevPage(setPage, customers)}
                 className="page-button"

@@ -27,6 +27,10 @@ const SingleSupplier = () => {
     [setLoading]
   );
 
+  const handleDelete = () => {
+    axios.delete(`http://localhost:3001/suppliers/delete-supplier/${id}`);
+  };
+
   useEffect(() => {
     getSingleItem(id);
     return () => {
@@ -54,7 +58,9 @@ const SingleSupplier = () => {
                 <button>Go Back</button>
               </Link>
               <button>Edit</button>
-              <button>Delete</button>
+              <Link to={"/suppliers"}>
+                <button onClick={handleDelete}>Delete</button>
+              </Link>
             </div>
           </div>
         </div>

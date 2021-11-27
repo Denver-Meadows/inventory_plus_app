@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const initialFormData = {
   name: "",
@@ -21,13 +22,21 @@ const CreateSupplierForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     // submit to DB - make sure validations are working
+    axios
+      .post("http://localhost:3001/suppliers/create-supplier", formData)
+      .then((res) => {
+        if (res.status === 200) {
+          window.location.href = "/suppliers";
+        }
+      });
     // clear formData and actual fields
+    setFormData(initialFormData);
   };
 
   return (
-    <form className="add-new-form">
+    <form className="add-new-form" action="/suppliers">
       <div className="add-new-form-control">
         <label htmlFor="name">Name : </label>
         <input
@@ -87,9 +96,9 @@ const CreateSupplierForm = () => {
         <Link to={"/suppliers"}>
           <button>Go Back</button>
         </Link>
-        <button type="submit" onClick={handleSubmit}>
-          Add
-        </button>
+        <Link to={"/suppliers"}>
+          <button onClick={handleSubmit}>Add</button>
+        </Link>
       </div>
     </form>
   );

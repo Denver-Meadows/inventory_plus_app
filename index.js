@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const port = 3001;
 
-// Import customerRoute
+// Routes
 const customerRoute = require("./routes/customerRoute");
 const inventoryRoute = require("./routes/inventoryRoute");
 const supplierRoute = require("./routes/supplierRoute");
