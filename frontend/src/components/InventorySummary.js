@@ -20,13 +20,13 @@ function InventorySummary() {
       <div className="inventory-overview-article-content">
         <div className="inventory-overview-article-content-summary">
           <FcComboChart className="inventory-icon" />
-          <p>Quantity on Hand</p>
-          <h3>{`${getTotalItems(allItems)} items`}</h3>
+          <p>Pieces on Hand</p>
+          <h3>{`${getTotalItems(allItems)} each`}</h3>
         </div>
         <div className="inventory-overview-article-content-summary">
           <FcShipped className="inventory-icon" />
           <p>To be Received</p>
-          <h3>{`${onOrder.current} items`}</h3>
+          <h3>{`${onOrder.current} each`}</h3>
         </div>
       </div>
     </article>

@@ -14,6 +14,8 @@ import CreateInvItem from "./pages/CreateInvItem";
 import SingleCustomerEdit from "./pages/EditSingleCustomer";
 import SingleSupplierEdit from "./pages/EditSingleSupplier";
 import SingleInvItemEdit from "./pages/EditSingleInvItem";
+import SettingsPage from "./pages/Settings";
+import NotificationPage from "./pages/Notifications";
 
 function App() {
   return (
@@ -59,6 +61,12 @@ function App() {
       </Route>
       <Route exact path="/inventory/:id/edit">
         <SingleInvItemEdit />
+      </Route>
+      <Route exact path="/settings">
+        <SettingsPage />
+      </Route>
+      <Route exact path="/notifications">
+        <NotificationPage />
       </Route>
       <Route path="*">
         <ErrorPage />

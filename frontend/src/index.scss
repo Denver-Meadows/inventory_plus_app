@@ -64,7 +64,7 @@ body {
 
   &-info-bar {
     background-color: var(--clr-primary-3);
-    padding: 1rem 1rem;
+    padding: 0.7rem 1rem;
     grid-column: 1 / 4;
     display: flex;
     justify-content: space-between;
@@ -108,10 +108,41 @@ body {
 .user-info {
   display: flex;
   align-items: center;
+  color: var(--clr-primary-1);
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    color: var(--clr-primary-1);
+    font-size: 1.2rem;
+  }
+
+  &-logo-icon {
+    font-size: 1.5rem;
+    margin-top: 0.4rem;
+    margin-right: 0.5rem;
+  }
+
+  &-logo-text {
+    margin-bottom: 0.2rem;
+  }
 
   &-item {
     padding-left: 1rem;
     font-size: 1.5rem;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  a {
+    color: var(--clr-primary-1);
   }
 }
 
@@ -313,7 +344,8 @@ body {
 }
 
 // Page buttons
-.page-button {
+.page-button,
+.dashboard-btn {
   margin-top: 1rem;
   margin-right: 1rem;
   background-color: var(--clr-primary-1);
@@ -330,6 +362,10 @@ body {
   &:active {
     transform: translateY(1px);
   }
+}
+
+.mar-left {
+  margin-left: 2.1rem;
 }
 
 .page-buttons {
