@@ -12,6 +12,7 @@ import CreateCustomer from "./pages/CreateCustomer";
 import CreateSupplier from "./pages/CreateSupplier";
 import SingleCustomerEdit from "./pages/SingleCustomerEdit";
 import SingleSupplierEdit from "./pages/SingleSupplierEdit";
+import SingleInvItemEdit from "./pages/SingleInvItemEdit";
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
       </Route>
       <Route exact path="/inventory/:id">
         <SingleInventoryItem />
+      </Route>
+      <Route exact path="/inventory/:id/edit">
+        <SingleInvItemEdit />
       </Route>
       <Route path="*">
         <ErrorPage />

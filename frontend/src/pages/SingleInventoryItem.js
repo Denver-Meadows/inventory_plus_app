@@ -10,6 +10,7 @@ const SingleInventoryItem = () => {
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
   const [item, setItem] = useState({});
+  console.log(item);
 
   const getSingleItem = useCallback(
     async (id) => {
@@ -26,6 +27,21 @@ const SingleInventoryItem = () => {
     },
     [setLoading]
   );
+
+  const handleDelete = () => {
+    const result = window.confirm(
+      "Are you sure you want to delete this entry?"
+    );
+    if (result) {
+      axios
+        .delete(`http://localhost:3001/inventory/delete-item/${id}`)
+        .then((res) => {
+          if (res.status === 200) {
+            window.location.href = "/inventory";
+          }
+        });
+    }
+  };
 
   useEffect(() => {
     getSingleItem(id);
@@ -55,8 +71,10 @@ const SingleInventoryItem = () => {
               <Link to={"/inventory"}>
                 <button>Go Back</button>
               </Link>
-              <button>Edit</button>
-              <button>Delete</button>
+              <Link to={`/inventory/${id}/edit`}>
+                <button>Edit</button>
+              </Link>
+              <button onClick={handleDelete}>Delete</button>
             </div>
           </div>
         </div>
