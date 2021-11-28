@@ -22,7 +22,7 @@ const EditCustomerForm = () => {
     async (id) => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`/customers/?ID=${id}`);
+        const { data } = await axios.get(`/suppliers/?ID=${id}`);
         const [item] = await data.filter((item) => item._id === id);
         setFormData(item);
         setLoading(false);
@@ -47,10 +47,11 @@ const EditCustomerForm = () => {
     // console.log(formData);
 
     axios
-      .put(`http://localhost:3001/customers/update-customer/${id}`, formData)
+      .put(`http://localhost:3001/suppliers/update-supplier/${id}`, formData)
       .then((res) => {
+        console.log(res.status);
         if (res.status === 200) {
-          window.location.href = "/customers";
+          window.location.href = "/suppliers";
         }
       });
 

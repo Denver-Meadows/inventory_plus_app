@@ -42,16 +42,6 @@ const SingleCustomer = () => {
     }
   };
 
-  // const handleEdit = () => {
-  //   axios.get(`http://localhost:3001/customers/edit-customer/${id}`);
-  //   // ONCE I GET THE DATA -- SET IT TO THE STATE
-  //   // .then((res) => {
-  //   //   if (res.status === 200) {
-  //   //     window.location.href = "/customers";
-  //   //   }
-  //   // });
-  // };
-
   useEffect(() => {
     getSingleItem(id);
     return () => {

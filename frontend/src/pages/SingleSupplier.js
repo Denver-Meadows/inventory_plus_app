@@ -68,7 +68,9 @@ const SingleSupplier = () => {
               <Link to={"/suppliers"}>
                 <button>Go Back</button>
               </Link>
-              <button>Edit</button>
+              <Link to={`/suppliers/${id}/edit`}>
+                <button>Edit</button>
+              </Link>
               <button onClick={handleDelete}>Delete</button>
             </div>
           </div>
