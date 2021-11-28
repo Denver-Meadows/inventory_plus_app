@@ -10,9 +10,10 @@ import SingleCustomer from "./pages/SingleCustomer";
 import SingleInventoryItem from "./pages/SingleInventoryItem";
 import CreateCustomer from "./pages/CreateCustomer";
 import CreateSupplier from "./pages/CreateSupplier";
-import SingleCustomerEdit from "./pages/SingleCustomerEdit";
-import SingleSupplierEdit from "./pages/SingleSupplierEdit";
-import SingleInvItemEdit from "./pages/SingleInvItemEdit";
+import CreateInvItem from "./pages/CreateInvItem";
+import SingleCustomerEdit from "./pages/EditSingleCustomer";
+import SingleSupplierEdit from "./pages/EditSingleSupplier";
+import SingleInvItemEdit from "./pages/EditSingleInvItem";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
       </Route>
       <Route exact path="/suppliers/new">
         <CreateSupplier />
+      </Route>
+      <Route exact path="/inventory/new">
+        <CreateInvItem />
       </Route>
       <Route exact path="/suppliers/:id">
         <SingleSupplier />

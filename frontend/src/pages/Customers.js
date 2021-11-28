@@ -13,11 +13,13 @@ const Customers = () => {
   const isMountedRef = useRef(true);
 
   useEffect(() => {
-    if (isMountedRef.current) fetchCustomers();
+    if (isMountedRef.current) {
+      fetchCustomers();
+    }
     return () => {
       isMountedRef.current = false;
     };
-  });
+  }, [fetchCustomers]);
 
   if (loading) return <Loading />;
   if (customers.length < 1) return <Dashboard />;

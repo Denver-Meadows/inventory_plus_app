@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(false);
   const onOrder = useRef(25);
-  // const [onOrder, setOnOrder] = useState(25);
+  const isMountedRef = useRef(true);
 
   const paginate = (data) => {
     const itemsPerPage = 10;
@@ -64,11 +64,13 @@ const AppProvider = ({ children }) => {
   }, [setLoading]);
 
   useEffect(() => {
-    fetchInventory();
-    fetchCustomers();
-    fetchSuppliers();
+    if (isMountedRef.current) {
+      fetchInventory();
+      fetchCustomers();
+      fetchSuppliers();
+    }
     return () => {
-      // cleanup
+      isMountedRef.current = false;
     };
   }, [fetchInventory, fetchSuppliers, fetchCustomers]);
 

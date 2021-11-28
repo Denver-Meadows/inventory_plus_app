@@ -10,7 +10,7 @@ const SingleInvItemEdit = () => {
         <TopInfoBar />
         <SideNav />
         <div className="single-page-overview">
-          <h1>Edit Customer</h1>
+          <h1>Edit Item</h1>
           <div className="add-new">
             <EditInvItemForm />
           </div>

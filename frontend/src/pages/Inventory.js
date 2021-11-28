@@ -29,7 +29,9 @@ const Inventory = () => {
         <div className="single-page-overview">
           <div className="page-header">
             <h1>Inventory</h1>
-            <button className="add-btn">Add Item</button>
+            <Link to={"inventory/new"}>
+              <button className="add-btn">Add Item</button>
+            </Link>
           </div>
           {inventory[page].map((item) => {
             const { name, _id } = item;

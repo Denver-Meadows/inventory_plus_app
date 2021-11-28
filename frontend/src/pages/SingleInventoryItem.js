@@ -10,7 +10,6 @@ const SingleInventoryItem = () => {
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
   const [item, setItem] = useState({});
-  console.log(item);
 
   const getSingleItem = useCallback(
     async (id) => {

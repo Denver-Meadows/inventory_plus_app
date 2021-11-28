@@ -11,7 +11,6 @@ router.route("/create-supplier").post((req, res, next) => {
       console.log(error);
       return next(error);
     } else {
-      console.log(data);
       res.json(data);
     }
   });
@@ -32,7 +31,6 @@ router.route("/edit-supplier/:id").get((req, res) => {
   supplier.findById(req.params.id, (error, data) => {
     if (error) return next(error);
     else {
-      console.log(data);
       res.json(data);
     }
   });
@@ -50,8 +48,7 @@ router.route("/update-supplier/:id").put((req, res, next) => {
         console.log(error);
         return next(error);
       } else {
-        console.log(data);
-        console.log("Student updated successfully");
+        console.log("Supplier updated successfully");
         res.json(data);
       }
     }

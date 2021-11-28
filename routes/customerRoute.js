@@ -11,7 +11,6 @@ router.route("/create-customer").post((req, res, next) => {
       console.log(error);
       return next(error);
     } else {
-      console.log(data);
       res.json(data);
     }
   });
@@ -32,7 +31,6 @@ router.route("/edit-customer/:id").get((req, res) => {
   customer.findById(req.params.id, (error, data) => {
     if (error) return next(error);
     else {
-      console.log(data);
       res.json(data);
     }
   });
@@ -50,8 +48,7 @@ router.route("/update-customer/:id").put((req, res, next) => {
         console.log(error);
         return next(error);
       } else {
-        console.log(data);
-        console.log("Student updated successfully");
+        console.log("Customer updated successfully");
         res.json(data);
       }
     }
