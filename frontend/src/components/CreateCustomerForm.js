@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import validateForm from "./validateCusSupForm";
 
 const initialFormData = {
   name: "",
@@ -12,6 +13,7 @@ const initialFormData = {
 
 const CreateCustomerForm = () => {
   const [formData, setFormData] = useState(initialFormData);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
@@ -22,16 +24,18 @@ const CreateCustomerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors(validateForm(formData));
+    console.log(errors);
     // submit to DB - make sure validations are working
-    axios
-      .post("http://localhost:3001/customers/create-customer", formData)
-      .then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/customers";
-        }
-      });
+    // axios
+    //   .post("http://localhost:3001/customers/create-customer", formData)
+    //   .then((res) => {
+    //     if (res.status === 200) {
+    //       window.location.href = "/customers";
+    //     }
+    //   });
     // clear formData and actual fields
-    setFormData(initialFormData);
+    // setFormData(initialFormData);
   };
 
   return (
@@ -43,9 +47,10 @@ const CreateCustomerForm = () => {
           id="name"
           name="name"
           required
-          // value={person.firstName}
+          value={formData.name}
           onChange={handleChange}
         />
+        {errors.name && <p className="form-error-text">{errors.name}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="email">Email : </label>
@@ -54,9 +59,10 @@ const CreateCustomerForm = () => {
           id="email"
           name="email"
           required
-          // value={person.firstName}
+          value={formData.email}
           onChange={handleChange}
         />
+        {errors.email && <p className="form-error-text">{errors.email}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="phone">Phone : </label>
@@ -65,9 +71,10 @@ const CreateCustomerForm = () => {
           id="phone"
           name="phone"
           required
-          // value={person.firstName}
+          value={formData.phone}
           onChange={handleChange}
         />
+        {errors.phone && <p className="form-error-text">{errors.phone}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="city">City : </label>
@@ -76,9 +83,10 @@ const CreateCustomerForm = () => {
           id="city"
           name="city"
           required
-          // value={person.firstName}
+          value={formData.city}
           onChange={handleChange}
         />
+        {errors.city && <p className="form-error-text">{errors.city}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="state">State : </label>
@@ -87,15 +95,16 @@ const CreateCustomerForm = () => {
           id="state"
           name="state"
           required
-          // value={person.firstName}
+          value={formData.state}
           onChange={handleChange}
         />
+        {errors.state && <p className="form-error-text">{errors.state}</p>}
       </div>
       <div className="add-new-btn-container">
-        <Link to={"/suppliers"}>
+        <Link to={"/customers"}>
           <button>Go Back</button>
         </Link>
-        <Link to={"/suppliers"}>
+        <Link to={"/customers"}>
           <button onClick={handleSubmit}>Add</button>
         </Link>
       </div>
