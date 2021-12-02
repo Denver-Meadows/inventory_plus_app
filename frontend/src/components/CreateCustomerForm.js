@@ -25,17 +25,22 @@ const CreateCustomerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(formData));
-    console.log(errors);
-    // submit to DB - make sure validations are working
-    // axios
-    //   .post("http://localhost:3001/customers/create-customer", formData)
-    //   .then((res) => {
-    //     if (res.status === 200) {
-    //       window.location.href = "/customers";
-    //     }
-    //   });
-    // clear formData and actual fields
-    // setFormData(initialFormData);
+
+    const currentErrors = validateForm(formData);
+
+    if (Object.keys(currentErrors).length === 0) {
+      // submit to DB after validations
+      axios
+        .post("http://localhost:3001/customers/create-customer", formData)
+        .then((res) => {
+          if (res.status === 200) {
+            window.location.href = "/customers";
+          }
+        });
+      // clear formData and errors
+      setFormData(initialFormData);
+      setErrors({});
+    }
   };
 
   return (
@@ -46,6 +51,7 @@ const CreateCustomerForm = () => {
           type="text"
           id="name"
           name="name"
+          placeholder="Enter name"
           required
           value={formData.name}
           onChange={handleChange}
@@ -58,6 +64,7 @@ const CreateCustomerForm = () => {
           type="email"
           id="email"
           name="email"
+          placeholder="Enter email address"
           required
           value={formData.email}
           onChange={handleChange}
@@ -70,6 +77,7 @@ const CreateCustomerForm = () => {
           type="text"
           id="phone"
           name="phone"
+          placeholder="Enter phone number"
           required
           value={formData.phone}
           onChange={handleChange}
@@ -82,6 +90,7 @@ const CreateCustomerForm = () => {
           type="text"
           id="city"
           name="city"
+          placeholder="Enter city"
           required
           value={formData.city}
           onChange={handleChange}
@@ -94,6 +103,7 @@ const CreateCustomerForm = () => {
           type="text"
           id="state"
           name="state"
+          placeholder="Enter state"
           required
           value={formData.state}
           onChange={handleChange}
