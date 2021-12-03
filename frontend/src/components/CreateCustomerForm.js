@@ -47,68 +47,78 @@ const CreateCustomerForm = () => {
     <form className="add-new-form" action="/suppliers">
       <div className="add-new-form-control">
         <label htmlFor="name">Name : </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter name"
-          required
-          value={formData.name}
-          onChange={handleChange}
-        />
-        {errors.name && <p className="form-error-text">{errors.name}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            required
+            // value={formData.name}
+            onChange={handleChange}
+          />
+          {errors.name && <p className="form-error-text">{errors.name}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="email">Email : </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter email address"
-          required
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <p className="form-error-text">{errors.email}</p>}
+        <div className="input-error">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@email.com"
+            required
+            // value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="form-error-text">{errors.email}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="phone">Phone : </label>
-        <input
-          type="text"
-          id="phone"
-          name="phone"
-          placeholder="Enter phone number"
-          required
-          value={formData.phone}
-          onChange={handleChange}
-        />
-        {errors.phone && <p className="form-error-text">{errors.phone}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="555-987-6543"
+            required
+            // value={formData.phone}
+            onChange={handleChange}
+          />
+          {errors.phone && <p className="form-error-text">{errors.phone}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="city">City : </label>
-        <input
-          type="text"
-          id="city"
-          name="city"
-          placeholder="Enter city"
-          required
-          value={formData.city}
-          onChange={handleChange}
-        />
-        {errors.city && <p className="form-error-text">{errors.city}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Cincinnati"
+            required
+            // value={formData.city}
+            onChange={handleChange}
+          />
+          {errors.city && <p className="form-error-text">{errors.city}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="state">State : </label>
-        <input
-          type="text"
-          id="state"
-          name="state"
-          placeholder="Enter state"
-          required
-          value={formData.state}
-          onChange={handleChange}
-        />
-        {errors.state && <p className="form-error-text">{errors.state}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="state"
+            name="state"
+            placeholder="OH"
+            required
+            // value={formData.state}
+            onChange={handleChange}
+          />
+          {errors.state && <p className="form-error-text">{errors.state}</p>}
+        </div>
       </div>
       <div className="add-new-btn-container">
         <Link to={"/customers"}>

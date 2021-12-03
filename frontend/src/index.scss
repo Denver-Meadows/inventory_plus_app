@@ -51,8 +51,6 @@ body {
 
 // Dashboard
 .dashboard {
-  // height: 100vh;
-  // background-image: linear-gradient(rgb(69, 236, 69), rgb(53, 139, 49));
   display: flex;
   justify-content: space-around;
   padding-top: 2rem;
@@ -294,6 +292,7 @@ body {
     grid-column: 2 / 4;
     width: 56rem;
     height: 45rem;
+    border-radius: 10px;
 
     h1 {
       margin-left: 2rem;
@@ -301,6 +300,10 @@ body {
       color: var(--clr-primary-1);
     }
   }
+}
+
+.input-error {
+  display: flex;
 }
 
 // Supplier & Customer styling
@@ -408,6 +411,27 @@ body {
 
   &-btn-container {
     margin-top: 1rem;
+  }
+
+  &-form-control {
+    label {
+      display: flex;
+      margin-bottom: 0.2rem;
+    }
+
+    input {
+      width: 35%;
+      border-radius: 3px;
+      border: 1px solid var(--clr-primary-1);
+      height: 2rem;
+      padding-left: 0.5rem;
+      margin-bottom: 0.5rem;
+      outline: none;
+
+      &:focus {
+        border: 3px solid var(--clr-primary-1);
+      }
+    }
   }
 
   button {

@@ -47,63 +47,73 @@ const CreateSupplierForm = () => {
     <form className="add-new-form" action="/suppliers">
       <div className="add-new-form-control">
         <label htmlFor="name">Name : </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          // value={person.firstName}
-          onChange={handleChange}
-        />
-        {errors.name && <p className="form-error-text">{errors.name}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            // value={person.firstName}
+            onChange={handleChange}
+          />
+          {errors.name && <p className="form-error-text">{errors.name}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="email">Email : </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          // value={person.firstName}
-          onChange={handleChange}
-        />
-        {errors.email && <p className="form-error-text">{errors.email}</p>}
+        <div className="input-error">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            // value={person.firstName}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="form-error-text">{errors.email}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="phone">Phone : </label>
-        <input
-          type="text"
-          id="phone"
-          name="phone"
-          required
-          // value={person.firstName}
-          onChange={handleChange}
-        />
-        {errors.phone && <p className="form-error-text">{errors.name}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            required
+            // value={person.firstName}
+            onChange={handleChange}
+          />
+          {errors.phone && <p className="form-error-text">{errors.name}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="city">City : </label>
-        <input
-          type="text"
-          id="city"
-          name="city"
-          required
-          // value={person.firstName}
-          onChange={handleChange}
-        />
-        {errors.city && <p className="form-error-text">{errors.city}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="city"
+            name="city"
+            required
+            // value={person.firstName}
+            onChange={handleChange}
+          />
+          {errors.city && <p className="form-error-text">{errors.city}</p>}
+        </div>
       </div>
       <div className="add-new-form-control">
         <label htmlFor="state">State : </label>
-        <input
-          type="text"
-          id="state"
-          name="state"
-          required
-          // value={person.firstName}
-          onChange={handleChange}
-        />
-        {errors.state && <p className="form-error-text">{errors.state}</p>}
+        <div className="input-error">
+          <input
+            type="text"
+            id="state"
+            name="state"
+            required
+            // value={person.firstName}
+            onChange={handleChange}
+          />
+          {errors.state && <p className="form-error-text">{errors.state}</p>}
+        </div>
       </div>
       <div className="add-new-btn-container">
         <Link to={"/suppliers"}>
