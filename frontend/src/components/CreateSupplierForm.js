@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import validateForm from "./validateCusSupForm";
 
 const initialFormData = {
   name: "",
@@ -12,6 +13,7 @@ const initialFormData = {
 
 const CreateSupplierForm = () => {
   const [formData, setFormData] = useState(initialFormData);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
@@ -22,16 +24,23 @@ const CreateSupplierForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // submit to DB - make sure validations are working
-    axios
-      .post("http://localhost:3001/suppliers/create-supplier", formData)
-      .then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/suppliers";
-        }
-      });
-    // clear formData and actual fields
-    setFormData(initialFormData);
+    setErrors(validateForm(formData));
+
+    const currentErrors = validateForm(formData);
+
+    if (Object.keys(currentErrors).length === 0) {
+      // submit to DB - make sure validations are working
+      axios
+        .post("http://localhost:3001/suppliers/create-supplier", formData)
+        .then((res) => {
+          if (res.status === 200) {
+            window.location.href = "/suppliers";
+          }
+        });
+      // clear formData and actual fields
+      setFormData(initialFormData);
+      setErrors({});
+    }
   };
 
   return (
@@ -46,6 +55,7 @@ const CreateSupplierForm = () => {
           // value={person.firstName}
           onChange={handleChange}
         />
+        {errors.name && <p className="form-error-text">{errors.name}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="email">Email : </label>
@@ -57,6 +67,7 @@ const CreateSupplierForm = () => {
           // value={person.firstName}
           onChange={handleChange}
         />
+        {errors.email && <p className="form-error-text">{errors.email}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="phone">Phone : </label>
@@ -68,6 +79,7 @@ const CreateSupplierForm = () => {
           // value={person.firstName}
           onChange={handleChange}
         />
+        {errors.phone && <p className="form-error-text">{errors.name}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="city">City : </label>
@@ -79,6 +91,7 @@ const CreateSupplierForm = () => {
           // value={person.firstName}
           onChange={handleChange}
         />
+        {errors.city && <p className="form-error-text">{errors.city}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="state">State : </label>
@@ -90,6 +103,7 @@ const CreateSupplierForm = () => {
           // value={person.firstName}
           onChange={handleChange}
         />
+        {errors.state && <p className="form-error-text">{errors.state}</p>}
       </div>
       <div className="add-new-btn-container">
         <Link to={"/suppliers"}>

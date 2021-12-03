@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../components/context";
 import Loading from "../pages/Loading";
+import validateForm from "./validateCusSupForm";
 
 const initialFormData = {
   name: "",
@@ -15,6 +16,7 @@ const initialFormData = {
 
 const EditCustomerForm = () => {
   const [formData, setFormData] = useState(initialFormData);
+  const [errors, setErrors] = useState({});
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
 
@@ -43,20 +45,24 @@ const EditCustomerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // submit to DB - make sure validations are working
-    // console.log(formData);
+    setErrors(validateForm(formData));
 
-    axios
-      .put(`http://localhost:3001/suppliers/update-supplier/${id}`, formData)
-      .then((res) => {
-        console.log(res.status);
-        if (res.status === 200) {
-          window.location.href = "/suppliers";
-        }
-      });
+    const currentErrors = validateForm(formData);
 
-    // clear formData and actual fields
-    setFormData(initialFormData);
+    if (Object.keys(currentErrors).length === 0) {
+      axios
+        .put(`http://localhost:3001/suppliers/update-supplier/${id}`, formData)
+        .then((res) => {
+          console.log(res.status);
+          if (res.status === 200) {
+            window.location.href = "/suppliers";
+          }
+        });
+
+      // clear formData and errors
+      setFormData(initialFormData);
+      setErrors({});
+    }
   };
 
   useEffect(() => {
@@ -79,6 +85,7 @@ const EditCustomerForm = () => {
           value={formData.name}
           onChange={handleChange}
         />
+        {errors.name && <p className="form-error-text">{errors.name}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="email">Email : </label>
@@ -90,6 +97,7 @@ const EditCustomerForm = () => {
           value={formData.email}
           onChange={handleChange}
         />
+        {errors.email && <p className="form-error-text">{errors.email}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="phone">Phone : </label>
@@ -101,6 +109,7 @@ const EditCustomerForm = () => {
           value={formData.phone}
           onChange={handleChange}
         />
+        {errors.phone && <p className="form-error-text">{errors.phone}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="city">City : </label>
@@ -112,6 +121,7 @@ const EditCustomerForm = () => {
           value={formData.city}
           onChange={handleChange}
         />
+        {errors.city && <p className="form-error-text">{errors.city}</p>}
       </div>
       <div className="add-new-form-control">
         <label htmlFor="state">State : </label>
@@ -123,6 +133,7 @@ const EditCustomerForm = () => {
           value={formData.state}
           onChange={handleChange}
         />
+        {errors.state && <p className="form-error-text">{errors.state}</p>}
       </div>
       <div className="add-new-btn-container">
         <Link to={"/suppliers"}>
