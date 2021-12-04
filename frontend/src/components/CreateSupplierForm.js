@@ -52,6 +52,7 @@ const CreateSupplierForm = () => {
             type="text"
             id="name"
             name="name"
+            placeholder="Name"
             required
             // value={person.firstName}
             onChange={handleChange}
@@ -66,6 +67,7 @@ const CreateSupplierForm = () => {
             type="email"
             id="email"
             name="email"
+            placeholder="example@email.com"
             required
             // value={person.firstName}
             onChange={handleChange}
@@ -80,6 +82,7 @@ const CreateSupplierForm = () => {
             type="text"
             id="phone"
             name="phone"
+            placeholder="555-987-6543"
             required
             // value={person.firstName}
             onChange={handleChange}
@@ -94,6 +97,7 @@ const CreateSupplierForm = () => {
             type="text"
             id="city"
             name="city"
+            placeholder="Cincinnati"
             required
             // value={person.firstName}
             onChange={handleChange}
@@ -108,6 +112,7 @@ const CreateSupplierForm = () => {
             type="text"
             id="state"
             name="state"
+            placeholder="OH"
             required
             // value={person.firstName}
             onChange={handleChange}

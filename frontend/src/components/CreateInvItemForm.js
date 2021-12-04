@@ -53,6 +53,7 @@ const EditInvItemForm = () => {
             type="text"
             id="name"
             name="name"
+            placeholder="Name"
             required
             // value={formData.name}
             onChange={handleChange}
@@ -67,6 +68,7 @@ const EditInvItemForm = () => {
             type="text"
             id="description"
             name="description"
+            placeholder="Description"
             required
             // value={formData.description}
             onChange={handleChange}
@@ -83,6 +85,7 @@ const EditInvItemForm = () => {
             type="text"
             id="category"
             name="category"
+            placeholder="Category"
             required
             // value={formData.category}
             onChange={handleChange}
@@ -99,6 +102,7 @@ const EditInvItemForm = () => {
             type="number"
             id="qtyOnHand"
             name="qtyOnHand"
+            placeholder="10"
             required
             // value={formData.qtyOnHand}
             onChange={handleChange}
@@ -115,6 +119,7 @@ const EditInvItemForm = () => {
             type="number"
             id="cost"
             name="cost"
+            placeholder="25"
             required
             // value={formData.cost}
             onChange={handleChange}
@@ -129,6 +134,7 @@ const EditInvItemForm = () => {
             type="number"
             id="sellPrice"
             name="sellPrice"
+            placeholder="50"
             required
             // value={formData.sellPrice}
             onChange={handleChange}
