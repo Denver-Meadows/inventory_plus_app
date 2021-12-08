@@ -55,7 +55,7 @@ router.route("/update-item/:id").put((req, res, next) => {
   );
 });
 
-// Delete Customer
+// Delete Item
 router.route("/delete-item/:id").delete((req, res, next) => {
   inventory.findByIdAndDelete(req.params.id, (error, data) => {
     if (error) return next(error);

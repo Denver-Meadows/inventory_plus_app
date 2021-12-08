@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-
 const port = 3001;
 
 // Routes
@@ -33,7 +32,7 @@ app.use("/inventory", inventoryRoute);
 app.use("/suppliers", supplierRoute);
 
 app.get("*", (req, res) => {
-  res.send("i don't know that path");
+  res.send("Sorry Page Doesn't Exist");
 });
 
 app.listen(port, () => {
