@@ -24,16 +24,3 @@ export const formatter = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 0,
 });
-
-// export const getSingleItem = async (id, path, func, loading) => {
-//   loading(true);
-//   try {
-//     const { data } = await axios.get(`/${path}/?ID=${id}`);
-//     const [item] = await data.filter((item) => item._id === id);
-//     func(item);
-//     loading(false);
-//   } catch (error) {
-//     console.log(error);
-//     loading(false);
-//   }
-// };

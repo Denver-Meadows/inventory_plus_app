@@ -55,7 +55,6 @@ const EditInvItemForm = () => {
             name="name"
             placeholder="Name"
             required
-            // value={formData.name}
             onChange={handleChange}
           />
           {errors.name && <p className="form-error-text">{errors.name}</p>}
@@ -70,7 +69,6 @@ const EditInvItemForm = () => {
             name="description"
             placeholder="Description"
             required
-            // value={formData.description}
             onChange={handleChange}
           />
           {errors.description && (
@@ -87,7 +85,6 @@ const EditInvItemForm = () => {
             name="category"
             placeholder="Category"
             required
-            // value={formData.category}
             onChange={handleChange}
           />
           {errors.category && (
@@ -104,7 +101,6 @@ const EditInvItemForm = () => {
             name="qtyOnHand"
             placeholder="10"
             required
-            // value={formData.qtyOnHand}
             onChange={handleChange}
           />
           {errors.qtyOnHand && (
@@ -121,7 +117,6 @@ const EditInvItemForm = () => {
             name="cost"
             placeholder="25"
             required
-            // value={formData.cost}
             onChange={handleChange}
           />
           {errors.cost && <p className="form-error-text">{errors.cost}</p>}
@@ -136,7 +131,6 @@ const EditInvItemForm = () => {
             name="sellPrice"
             placeholder="50"
             required
-            // value={formData.sellPrice}
             onChange={handleChange}
           />
           {errors.sellPrice && (

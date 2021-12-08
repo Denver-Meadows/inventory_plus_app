@@ -29,7 +29,6 @@ const CreateCustomerForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      // submit to DB after validations
       axios
         .post("http://localhost:3001/customers/create-customer", formData)
         .then((res) => {
@@ -37,7 +36,6 @@ const CreateCustomerForm = () => {
             window.location.href = "/customers";
           }
         });
-      // clear formData and errors
       setFormData(initialFormData);
       setErrors({});
     }
@@ -54,7 +52,6 @@ const CreateCustomerForm = () => {
             name="name"
             placeholder="Name"
             required
-            // value={formData.name}
             onChange={handleChange}
           />
           {errors.name && <p className="form-error-text">{errors.name}</p>}
@@ -69,7 +66,6 @@ const CreateCustomerForm = () => {
             name="email"
             placeholder="example@email.com"
             required
-            // value={formData.email}
             onChange={handleChange}
           />
           {errors.email && <p className="form-error-text">{errors.email}</p>}
@@ -84,7 +80,6 @@ const CreateCustomerForm = () => {
             name="phone"
             placeholder="555-987-6543"
             required
-            // value={formData.phone}
             onChange={handleChange}
           />
           {errors.phone && <p className="form-error-text">{errors.phone}</p>}
@@ -99,7 +94,6 @@ const CreateCustomerForm = () => {
             name="city"
             placeholder="Cincinnati"
             required
-            // value={formData.city}
             onChange={handleChange}
           />
           {errors.city && <p className="form-error-text">{errors.city}</p>}
@@ -114,7 +108,6 @@ const CreateCustomerForm = () => {
             name="state"
             placeholder="OH"
             required
-            // value={formData.state}
             onChange={handleChange}
           />
           {errors.state && <p className="form-error-text">{errors.state}</p>}

@@ -29,7 +29,6 @@ const CreateSupplierForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      // submit to DB - make sure validations are working
       axios
         .post("http://localhost:3001/suppliers/create-supplier", formData)
         .then((res) => {
@@ -37,7 +36,7 @@ const CreateSupplierForm = () => {
             window.location.href = "/suppliers";
           }
         });
-      // clear formData and actual fields
+      // clear formData and errors
       setFormData(initialFormData);
       setErrors({});
     }
@@ -54,7 +53,6 @@ const CreateSupplierForm = () => {
             name="name"
             placeholder="Name"
             required
-            // value={person.firstName}
             onChange={handleChange}
           />
           {errors.name && <p className="form-error-text">{errors.name}</p>}
@@ -69,7 +67,6 @@ const CreateSupplierForm = () => {
             name="email"
             placeholder="example@email.com"
             required
-            // value={person.firstName}
             onChange={handleChange}
           />
           {errors.email && <p className="form-error-text">{errors.email}</p>}
@@ -84,7 +81,6 @@ const CreateSupplierForm = () => {
             name="phone"
             placeholder="555-987-6543"
             required
-            // value={person.firstName}
             onChange={handleChange}
           />
           {errors.phone && <p className="form-error-text">{errors.name}</p>}
@@ -99,7 +95,6 @@ const CreateSupplierForm = () => {
             name="city"
             placeholder="Cincinnati"
             required
-            // value={person.firstName}
             onChange={handleChange}
           />
           {errors.city && <p className="form-error-text">{errors.city}</p>}
@@ -114,7 +109,6 @@ const CreateSupplierForm = () => {
             name="state"
             placeholder="OH"
             required
-            // value={person.firstName}
             onChange={handleChange}
           />
           {errors.state && <p className="form-error-text">{errors.state}</p>}
