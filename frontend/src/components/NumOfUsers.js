@@ -1,6 +1,6 @@
 import { FcConferenceCall, FcOrganization } from "react-icons/fc";
 import { useGlobalContext } from "./context";
-import { numOfPeople } from "../utils";
+import { numOfPeople } from "../utilities.js/utils";
 
 function NumOfUsers() {
   const { customers, suppliers } = useGlobalContext();

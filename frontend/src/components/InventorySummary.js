@@ -1,6 +1,6 @@
 import { FcComboChart, FcShipped } from "react-icons/fc";
 import { useGlobalContext } from "./context";
-import { getTotalItems } from "../utils";
+import { getTotalItems } from "../utilities.js/utils";
 
 function InventorySummary() {
   const { inventory, onOrder } = useGlobalContext();

@@ -1,5 +1,5 @@
 import { useGlobalContext } from "./context";
-import { getNumOfCategories, getNumItemsLowStock } from "../utils";
+import { getNumOfCategories, getNumItemsLowStock } from "../utilities.js/utils";
 
 function ProductDetails() {
   const { inventory } = useGlobalContext();

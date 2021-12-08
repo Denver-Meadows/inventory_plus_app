@@ -1,5 +1,9 @@
 import { useGlobalContext } from "./context";
-import { formatter, getNumOfCategories, getAvgCost } from "../utils";
+import {
+  formatter,
+  getNumOfCategories,
+  getAvgCost,
+} from "../utilities.js/utils";
 import { FcBarChart, FcCancel, FcLeft } from "react-icons/fc";
 
 function ExpensesOverview() {

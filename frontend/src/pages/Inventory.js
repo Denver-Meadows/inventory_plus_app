@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import { prevPage, nextPage } from "../utils";
+import { prevPage, nextPage } from "../utilities.js/utils";
 
 const Inventory = () => {
   const { inventory, loading, fetchInventory } = useGlobalContext();

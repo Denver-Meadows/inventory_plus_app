@@ -1,5 +1,5 @@
 import { useGlobalContext } from "./context";
-import { formatter } from "../utils";
+import { formatter } from "../utilities.js/utils";
 import {
   FcSalesPerformance,
   FcBullish,

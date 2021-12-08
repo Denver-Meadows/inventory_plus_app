@@ -4,7 +4,7 @@ import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../components/context";
 import { Link } from "react-router-dom";
-import { prevPage, nextPage } from "../utils";
+import { prevPage, nextPage } from "../utilities.js/utils";
 import Dashboard from "./Dashboard";
 
 const Suppliers = () => {

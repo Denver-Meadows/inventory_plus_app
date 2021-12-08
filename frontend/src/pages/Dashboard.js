@@ -2,7 +2,6 @@ import SideNav from "../components/SideNav";
 import TopInfoBar from "../components/TopInfoBar";
 import SalesOverview from "../components/SalesOverview";
 import ExpensesOverview from "../components/ExpensesOverview";
-// import InventoryOverview from "./components/InventoryOverview";
 import InventoryChart from "../components/InventoryChart";
 import ProductDetails from "../components/ProductDetails";
 import NumOfUsers from "../components/NumOfUsers";
