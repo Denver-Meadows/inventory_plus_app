@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import validateForm from "./validateCusSupForm";
+import validateForm from "../utilities.js/validateCusSupForm";
 
 const initialFormData = {
   name: "",

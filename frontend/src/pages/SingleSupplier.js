@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
-import { useGlobalContext } from "../components/context";
+import { useGlobalContext } from "../context/context";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 

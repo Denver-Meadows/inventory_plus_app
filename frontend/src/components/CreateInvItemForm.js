@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import validateForm from "./validateInventoryForm";
+import validateForm from "../utilities.js/validateInventoryForm";
 
 const initialFormData = {
   name: "",

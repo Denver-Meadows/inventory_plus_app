@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import validateForm from "./validateCusSupForm";
+import validateForm from "../utilities.js/validateCusSupForm";
 
 const initialFormData = {
   name: "",
@@ -83,7 +83,7 @@ const CreateSupplierForm = () => {
             required
             onChange={handleChange}
           />
-          {errors.phone && <p className="form-error-text">{errors.name}</p>}
+          {errors.phone && <p className="form-error-text">{errors.phone}</p>}
         </div>
       </div>
       <div className="add-new-form-control">

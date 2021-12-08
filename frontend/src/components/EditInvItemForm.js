@@ -2,9 +2,9 @@ import React, { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useGlobalContext } from "../components/context";
+import { useGlobalContext } from "../context/context";
 import Loading from "../pages/Loading";
-import validateForm from "./validateInventoryForm";
+import validateForm from "../utilities.js/validateInventoryForm";
 
 const initialFormData = {
   name: "",

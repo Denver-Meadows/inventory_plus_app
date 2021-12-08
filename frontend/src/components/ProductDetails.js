@@ -1,4 +1,4 @@
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../context/context";
 import { getNumOfCategories, getNumItemsLowStock } from "../utilities.js/utils";
 
 function ProductDetails() {
