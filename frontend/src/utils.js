@@ -24,3 +24,29 @@ export const formatter = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 0,
 });
+
+export const getTotalItems = (arr) => {
+  if (arr.length === 0) return;
+  const total = arr
+    .map((item) => item.qtyOnHand)
+    .reduce((prev, next) => next + prev);
+  return total;
+};
+
+export const numOfPeople = (items) => {
+  const num = items.flat(1);
+  return num.length;
+};
+
+export const getNumItemsLowStock = (items) => {
+  const lowItems = items.filter((item) => item.qtyOnHand < 3);
+  return lowItems.length;
+};
+
+export const getAvgCost = (arr) => {
+  if (arr.length === 0) return;
+  const total = arr
+    .map((item) => item.cost)
+    .reduce((prev, next) => next + prev);
+  return total;
+};

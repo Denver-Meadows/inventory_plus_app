@@ -9,7 +9,6 @@ import {
 
 function SalesOverview() {
   const { inventory } = useGlobalContext();
-
   const allItems = inventory.flat(1);
 
   const getTotalSales = (arr) => {

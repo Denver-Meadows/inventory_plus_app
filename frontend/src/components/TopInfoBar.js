@@ -18,9 +18,6 @@ function TopInfoBar() {
             <IoMdNotificationsOutline />
           </div>
         </Link>
-        {/* <div className="user-info-login user-info-item">
-          <button>login</button>
-        </div> */}
         <Link to={"/settings"}>
           <div className="user-info-settings user-info-item">
             <FiSettings />

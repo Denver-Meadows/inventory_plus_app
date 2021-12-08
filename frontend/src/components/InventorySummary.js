@@ -1,18 +1,10 @@
 import { FcComboChart, FcShipped } from "react-icons/fc";
 import { useGlobalContext } from "./context";
+import { getTotalItems } from "../utils";
 
 function InventorySummary() {
   const { inventory, onOrder } = useGlobalContext();
-
   const allItems = inventory.flat(1);
-
-  const getTotalItems = (arr) => {
-    if (arr.length === 0) return;
-    const total = arr
-      .map((item) => item.qtyOnHand)
-      .reduce((prev, next) => next + prev);
-    return total;
-  };
 
   return (
     <article className="dashboard-content-inventory-summary inventory-overview-article">

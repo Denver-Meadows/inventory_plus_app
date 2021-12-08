@@ -1,14 +1,9 @@
 import { useGlobalContext } from "./context";
-import { getNumOfCategories } from "../utils";
+import { getNumOfCategories, getNumItemsLowStock } from "../utils";
 
 function ProductDetails() {
   const { inventory } = useGlobalContext();
   const numOfItems = inventory.flat(1);
-
-  const getNumItemsLowStock = (items) => {
-    const lowItems = items.filter((item) => item.qtyOnHand < 3);
-    return lowItems.length;
-  };
 
   return (
     <article className="dashboard-content-product-details info-component">

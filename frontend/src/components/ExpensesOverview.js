@@ -1,19 +1,11 @@
 import { useGlobalContext } from "./context";
-import { formatter, getNumOfCategories } from "../utils";
+import { formatter, getNumOfCategories, getAvgCost } from "../utils";
 import { FcBarChart, FcCancel, FcLeft } from "react-icons/fc";
 
 function ExpensesOverview() {
   const { inventory } = useGlobalContext();
   const allItems = inventory.flat(1);
   const categories = getNumOfCategories(allItems);
-
-  const getAvgCost = (arr) => {
-    if (arr.length === 0) return;
-    const total = arr
-      .map((item) => item.cost)
-      .reduce((prev, next) => next + prev);
-    return total;
-  };
 
   const costPerItem = () => {
     if (allItems.length === 0) return;

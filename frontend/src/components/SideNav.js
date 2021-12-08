@@ -19,12 +19,6 @@ function SideNav() {
             <BsBox /> Inventory
           </Link>
         </li>
-        {/* <li className="side-nav-item">
-          <Link to="/purchasing">
-            {" "}
-            <BsCartCheck /> Purchasing
-          </Link>
-        </li> */}
         <li className="side-nav-item">
           <Link to="/customers">
             {" "}

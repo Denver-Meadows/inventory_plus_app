@@ -1,13 +1,9 @@
 import { FcConferenceCall, FcOrganization } from "react-icons/fc";
 import { useGlobalContext } from "./context";
+import { numOfPeople } from "../utils";
 
 function NumOfUsers() {
   const { customers, suppliers } = useGlobalContext();
-
-  const numOfPeople = (items) => {
-    const num = items.flat(1);
-    return num.length;
-  };
 
   return (
     <article className="dashboard-content-num-users inventory-overview-article">
