@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": " node index.js",
-    "client": "cd frontend && npm start",
+    "client": "cd client && npm start",
     "dev": "concurrently \"nodemon index.js\" \"npm run client\""
   },
   "repository": {
