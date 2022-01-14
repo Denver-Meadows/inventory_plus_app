@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": " node index.js",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "client": "cd client && npm start",
     "dev": "concurrently \"nodemon index.js\" \"npm run client\""
+  },
+  "engines": {
+    "node": "15.16.0"
   },
   "repository": {
     "type": "git",

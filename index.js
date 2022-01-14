@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3001;
 
+const path = require("path");
+
 // Routes
 const customerRoute = require("./routes/customerRoute");
 const inventoryRoute = require("./routes/inventoryRoute");
@@ -33,10 +35,16 @@ app.use("/customers", customerRoute);
 app.use("/inventory", inventoryRoute);
 app.use("/suppliers", supplierRoute);
 
+app.us(express.static(path.join(__dirname, "client", "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.get("*", (req, res) => {
   res.send("Sorry Page Doesn't Exist");
 });
 
 app.listen(port, () => {
-  console.log("Serving on port 3001");
+  console.log(`Serving on port ${port}`);
 });
