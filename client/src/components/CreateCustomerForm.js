@@ -29,13 +29,11 @@ const CreateCustomerForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      axios
-        .post("http://localhost:3001/customers/create-customer", formData)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/customers";
-          }
-        });
+      axios.post("/customers/create-customer", formData).then((res) => {
+        if (res.status === 200) {
+          window.location.href = "/customers";
+        }
+      });
       setFormData(initialFormData);
       setErrors({});
     }
