@@ -51,13 +51,11 @@ const EditInvItemForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      axios
-        .put(`http://localhost:3001/inventory/update-item/${id}`, formData)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/inventory";
-          }
-        });
+      axios.put(`/inventory/update-item/${id}`, formData).then((res) => {
+        if (res.status === 200) {
+          window.location.href = "/inventory";
+        }
+      });
 
       // clear formData and errors
       setFormData(initialFormData);

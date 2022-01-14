@@ -29,13 +29,11 @@ const CreateSupplierForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      axios
-        .post("http://localhost:3001/suppliers/create-supplier", formData)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/suppliers";
-          }
-        });
+      axios.post("/suppliers/create-supplier", formData).then((res) => {
+        if (res.status === 200) {
+          window.location.href = "/suppliers";
+        }
+      });
       // clear formData and errors
       setFormData(initialFormData);
       setErrors({});

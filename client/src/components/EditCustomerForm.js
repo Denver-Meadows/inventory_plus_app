@@ -50,13 +50,11 @@ const EditCustomerForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      axios
-        .put(`http://localhost:3001/customers/update-customer/${id}`, formData)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/customers";
-          }
-        });
+      axios.put(`/customers/update-customer/${id}`, formData).then((res) => {
+        if (res.status === 200) {
+          window.location.href = "/customers";
+        }
+      });
 
       // clear formData and errors
       setFormData(initialFormData);

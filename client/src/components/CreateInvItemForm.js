@@ -31,7 +31,7 @@ const EditInvItemForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios
-        .post(`http://localhost:3001/inventory/create-item/`, formData)
+        .post(`/inventory/create-item/`, formData)
         .then((res) => {
           if (res.status === 200) {
             window.location.href = "/inventory";
