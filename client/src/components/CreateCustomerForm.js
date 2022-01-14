@@ -29,7 +29,7 @@ const CreateCustomerForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      axios.post("/customers/create-customer", formData).then((res) => {
+      axios.post("customers/create-customer", formData).then((res) => {
         if (res.status === 200) {
           window.location.href = "/customers";
         }
@@ -40,7 +40,7 @@ const CreateCustomerForm = () => {
   };
 
   return (
-    <form className="add-new-form" action="/suppliers">
+    <form className="add-new-form" action="/customers">
       <div className="add-new-form-control">
         <label htmlFor="name">Name : </label>
         <div className="input-error">
