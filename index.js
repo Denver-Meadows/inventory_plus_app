@@ -12,8 +12,8 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const supplierRoute = require("./routes/supplierRoute");
 
 // connect to mongo with mongoose
-const dbURL =
-  process.env.DB_URL || "mongodb://localhost:27017/inventory_plus_app";
+//  || "mongodb://localhost:27017/inventory_plus_app"
+const dbURL = process.env.DB_URL;
 mongoose
   .connect(dbURL, {
     useNewUrlParser: true,
