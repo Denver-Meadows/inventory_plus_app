@@ -3,13 +3,14 @@ import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../context/context";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const SingleCustomer = () => {
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
   const [customer, setCustomer] = useState({});
+  const history = useHistory();
 
   const getSingleItem = useCallback(
     async (id) => {
@@ -33,9 +34,10 @@ const SingleCustomer = () => {
     );
     if (result) {
       axios.delete(`/customers/delete-customer/${id}`).then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/customers";
-        }
+        // if (res.status === 200) {
+        //   window.location.href = "/customers";
+        // }
+        history.push("/customers");
       });
     }
   };

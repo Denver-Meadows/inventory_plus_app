@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
@@ -19,6 +19,7 @@ const EditCustomerForm = () => {
   const [errors, setErrors] = useState({});
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
+  const history = useHistory();
 
   const getSingleItem = useCallback(
     async (id) => {
@@ -51,9 +52,10 @@ const EditCustomerForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios.put(`/customers/update-customer/${id}`, formData).then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/customers";
-        }
+        // if (res.status === 200) {
+        //   window.location.href = "/customers";
+        // }
+        history.push("/customers");
       });
 
       // clear formData and errors
