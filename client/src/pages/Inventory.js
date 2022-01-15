@@ -43,7 +43,7 @@ const Inventory = () => {
               </div>
             );
           })}
-          {inventory.length < 0 ? (
+          {inventory.length === 1 ? (
             ""
           ) : (
             <div className="page-buttons">

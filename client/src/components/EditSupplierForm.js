@@ -52,7 +52,6 @@ const EditCustomerForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios.put(`/suppliers/update-supplier/${id}`, formData).then((res) => {
-        console.log(res.status);
         history.push("/suppliers");
       });
 
