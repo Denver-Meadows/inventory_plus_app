@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
@@ -20,6 +20,7 @@ const EditInvItemForm = () => {
   const [errors, setErrors] = useState({});
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
+  const history = useHistory();
 
   const getSingleItem = useCallback(
     async (id) => {
@@ -52,9 +53,7 @@ const EditInvItemForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios.put(`/inventory/update-item/${id}`, formData).then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/inventory";
-        }
+        history.push("/inventory");
       });
 
       // clear formData and errors

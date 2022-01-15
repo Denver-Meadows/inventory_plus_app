@@ -31,9 +31,6 @@ const CreateCustomerForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios.post("/customers/create-customer", formData).then((res) => {
-        // if (res.status === 200) {
-        //   window.location.href = "/customers";
-        // }
         history.push("/customers");
       });
       setFormData(initialFormData);

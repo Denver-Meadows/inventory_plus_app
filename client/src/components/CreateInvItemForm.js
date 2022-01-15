@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import validateForm from "../utilities.js/validateInventoryForm";
 
@@ -15,6 +15,7 @@ const initialFormData = {
 const EditInvItemForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
   const handleChange = (e) => {
     setFormData({
@@ -30,13 +31,9 @@ const EditInvItemForm = () => {
     const currentErrors = validateForm(formData);
 
     if (Object.keys(currentErrors).length === 0) {
-      axios
-        .post(`/inventory/create-item/`, formData)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/inventory";
-          }
-        });
+      axios.post(`/inventory/create-item/`, formData).then((res) => {
+        history.push("/inventory");
+      });
 
       // clear formData and actual fields
       setFormData(initialFormData);

@@ -52,9 +52,6 @@ const EditCustomerForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios.put(`/customers/update-customer/${id}`, formData).then((res) => {
-        // if (res.status === 200) {
-        //   window.location.href = "/customers";
-        // }
         history.push("/customers");
       });
 

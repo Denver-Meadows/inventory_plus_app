@@ -3,13 +3,14 @@ import TopInfoBar from "../components/TopInfoBar";
 import SideNav from "../components/SideNav";
 import Loading from "./Loading";
 import { useGlobalContext } from "../context/context";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const SingleInventoryItem = () => {
   const { loading, setLoading } = useGlobalContext();
   const { id } = useParams();
   const [item, setItem] = useState({});
+  const history = useHistory();
 
   const getSingleItem = useCallback(
     async (id) => {
@@ -32,13 +33,9 @@ const SingleInventoryItem = () => {
       "Are you sure you want to delete this entry?"
     );
     if (result) {
-      axios
-        .delete(`http://localhost:3001/inventory/delete-item/${id}`)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/inventory";
-          }
-        });
+      axios.delete(`/inventory/delete-item/${id}`).then((res) => {
+        history.push("/inventory");
+      });
     }
   };
 
