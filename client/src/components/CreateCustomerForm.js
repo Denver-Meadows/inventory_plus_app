@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import validateForm from "../utilities.js/validateCusSupForm";
 
@@ -14,6 +14,7 @@ const initialFormData = {
 const CreateCustomerForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
   const handleChange = (e) => {
     setFormData({
@@ -30,9 +31,10 @@ const CreateCustomerForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       axios.post("/customers/create-customer", formData).then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/customers";
-        }
+        // if (res.status === 200) {
+        //   window.location.href = "/customers";
+        // }
+        history.push("/customers");
       });
       setFormData(initialFormData);
       setErrors({});

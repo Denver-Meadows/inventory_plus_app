@@ -17,14 +17,14 @@ router.route("/create-customer").post((req, res, next) => {
 });
 
 // Read Customers
-// router.get("/", (req, res) => {
-//   customer.find((error, data) => {
-//     if (error) next(error);
-//     else {
-//       res.json(data);
-//     }
-//   });
-// });
+router.get("/", (req, res) => {
+  customer.find((error, data) => {
+    if (error) next(error);
+    else {
+      res.json(data);
+    }
+  });
+});
 
 // Get Single Customer
 router.route("/edit-customer/:id").get((req, res) => {

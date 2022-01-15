@@ -32,13 +32,11 @@ const SingleCustomer = () => {
       "Are you sure you want to delete this entry?"
     );
     if (result) {
-      axios
-        .delete(`http://localhost:3001/customers/delete-customer/${id}`)
-        .then((res) => {
-          if (res.status === 200) {
-            window.location.href = "/customers";
-          }
-        });
+      axios.delete(`/customers/delete-customer/${id}`).then((res) => {
+        if (res.status === 200) {
+          window.location.href = "/customers";
+        }
+      });
     }
   };
 
